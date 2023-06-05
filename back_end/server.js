@@ -4,7 +4,7 @@ const { Server } = require("http");
 const { errorHandler } = require("./middleware/errorMiddleware");
 const connectMongoDB = require("./config/mongodb");
 const dotenv = require("dotenv").config();
-const port = process.env.PORT || 5000;
+const port = process.env.BACKEND_PORT || 5000;
 const app = express();
 const addSample = require("./test_function/ActivitiesSample")
 
