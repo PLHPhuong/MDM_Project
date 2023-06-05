@@ -20,6 +20,10 @@ const activitiesSchema = mongoose.Schema(
       max: [5, "Less than min value which is 5"],
       default: 0,
     },
+    image: {
+      type: [String],
+      default: [],
+    },
     free_cancellation_available: {
       type: Boolean,
       default: true,
@@ -52,30 +56,28 @@ const activitiesSchema = mongoose.Schema(
       type: String,
     },
     itinerary: {
-      duration: {
-        // hours
-        start: {
-          type: Number,
-          validate: {
-            validator: function (v) {
-              return v > 0;
-            },
-            message: (props) =>
-              `itinerary.duration.start need to be greater than 0`,
+      // hours
+      min_duration: {
+        type: Number,
+        validate: {
+          validator: function (v) {
+            return v > 0;
           },
-          required: [true, `Missing itinerary.duration.start field`],
+          message: (props) =>
+            `itinerary.duration.start need to be greater than 0`,
         },
-        end: {
-          type: Number,
-          validate: {
-            validator: function (v) {
-              return v > this.itinerary.duration.start;
-            },
-            message: (props) =>
-              `itinerary.duration.end need to be greater or equal to than itinerary.duration.start`,
+        required: [true, `Missing itinerary.duration.start field`],
+      },
+      max_duration: {
+        type: Number,
+        validate: {
+          validator: function (v) {
+            return v >= this.itinerary.min_duration;
           },
-          required: [true, `Missing itinerary.duration.end field`],
+          message: (props) =>
+            `itinerary.duration.end need to be greater or equal to than itinerary.duration.start`,
         },
+        required: [true, `Missing itinerary.duration.end field`],
       },
       stops: [
         {
@@ -105,19 +107,13 @@ const activitiesSchema = mongoose.Schema(
         },
       ],
     },
-    location: {
-      departure: {
-        location: {
-          type: String,
-          required: [true, "Missing location.departure.location field"],
-        },
-      },
-      end: {
-        location: {
-          type: String,
-          required: [true, "Missing location.departure.location field"],
-        },
-      },
+    location_departure: {
+      type: String,
+      required: [true, "Missing location_departure field"],
+    },
+    location_end: {
+      type: String,
+      // required: [true, "Missing location_end field"],
     },
     ticket: {
       open: [
@@ -132,39 +128,51 @@ const activitiesSchema = mongoose.Schema(
           },
         },
       ],
-      select_time: { 
-        type: [String],
-        validate: {
-          validator: function (v) {
-            return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
-          },
-          message: (props) =>
-            `select_time ticket.[select_time]. need to has format 00:00 -> 23:59`,
-        },
-        required: [true, "select_time ticket.[select_time]. field"]
-      },
-      max_number_of_people:
-      { 
-        type: Number,
-        min: 1,
-        default: 1,
-        required: [true, "ticket.[language] field"]
-      },
-      price:{
-        max_number_of_people:
-        { 
-          type: Number,
-          validate: {
-            validator: function (v) {
-              return v > 0;
+      select_time: {
+        type: [
+          {
+            type: String,
+            validate: {
+              validator: function (v) {
+                return /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/.test(v);
+              },
+              message: (props) =>
+                `ticket.[select_time]. need to has format 00:00 -> 23:59`,
             },
-            message: (props) =>
-              `ticket.price need to be greater than 0`,
+            required: [true, "ticket.[select_time]. field"],
           },
-          required: [true, "ticket.price field"]
-        },
-      }
+        ],
+      },
+      ticket_type: {
+        type: [
+          {
+            name: {
+              type: String,
+              required: [true, "ticket.[ticket_type].[name] field"],
+            },
+            people_per_ticket: {
+              type: Number,
+              min: 1,
+              default: 1,
+              required: [true, "ticket.[ticket_type].people_per_ticket field"],
+            },
+            price: {
+              type: Number,
+              validate: {
+                validator: function (v) {
+                  return v > 0;
+                },
+                message: (props) =>
+                  `ticket.[ticket_type].price need to be greater than 0`,
+              },
+              required: [true, "missing ticket.[ticket_type].price field"],
+            },
+          },
+        ],
+      },
     },
   },
   { timestamps: true }
 );
+
+module.exports = mongoose.model("Activity", activitiesSchema, "activities");
