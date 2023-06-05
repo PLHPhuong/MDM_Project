@@ -15,8 +15,8 @@ addSample();
 app.use(express.json());
 app.use(express.urlencoded({ extended: "false" }));
 
-app.use("/api/accommodations", require("./routes/testRoutes"));
-
+// app.use("/api/accommodations", require("./routes/testRoutes"));
+app.use("/api/activities", require("./routes/activitiesRoutes"));
 
 
 
