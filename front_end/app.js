@@ -7,6 +7,8 @@ const { engine } = require('express-handlebars');
 const port = process.env.FRONTEND_PORT || 3000
 
 const app = express();
+
+// Use static folder
 app.use(express.static(path.join(__dirname, "public")));
 
 
@@ -16,7 +18,6 @@ const hbs = exphbs.create({
     extname:'hbs'
 });
 
-// Use static folder
 
 
 app.engine("hbs", hbs.engine);
@@ -31,7 +32,7 @@ app.use(express.urlencoded({extended: false,}));
 // });
 
 app.use("/", require("./routes/unityRoute"));
-
+app.use("/attraction", require("./routes/attractionRoute"));
 // Test default template od handlebar
 // app.use(express.static(path.join(__dirname, "public")));
 

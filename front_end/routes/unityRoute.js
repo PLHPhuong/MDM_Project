@@ -4,18 +4,20 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.render("index", {
+    isIndex:true,
     layout: "main",
   });
 });
 
-router.get("/test", (req, res) => {
-  res.render("index", {
-    layout: "main_copy",
-  });
-});
-router.get("/test1", (req, res) => {
-  res.render("test", {
+router.get("/", (req, res) => {
+  res.render("404", {
     layout: false,
   });
 });
+
+// router.get("/test1", (req, res) => {
+//   res.render("test", {
+//     layout: false,
+//   });
+// });
 module.exports = router;
