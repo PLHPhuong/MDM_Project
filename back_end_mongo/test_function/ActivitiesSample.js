@@ -1,6 +1,6 @@
 // const mongoose = require("mongoose");
 const Activity = require("../models/activitiesModel");
-const sample = require("../test_function/sample");
+const sample = require("./sample");
 const activities_sample_data = sample.activities
 
 addSample = async () => {
