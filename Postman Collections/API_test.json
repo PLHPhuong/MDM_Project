@@ -10,7 +10,20 @@
 			"item": [
 				{
 					"name": "Get all activities in database",
-					"_postman_id": "08958c88-b25e-463b-9db2-f38049b1c491",
+					"id": "08958c88-b25e-463b-9db2-f38049b1c491",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/activities"
+					},
+					"response": []
+				},
+				{
+					"name": "Create an new Activities",
+					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -22,7 +35,7 @@
 					"response": []
 				}
 			],
-			"_postman_id": "1a68fa0c-cce8-466e-b39b-eaf0393bb9cb"
+			"id": "1a68fa0c-cce8-466e-b39b-eaf0393bb9cb"
 		}
 	]
 }
