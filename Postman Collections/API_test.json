@@ -38,7 +38,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\": \"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\",\r\n   \"duration\":{\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"rating\":4.4,\r\n   \"free_cancellation_available\": true\r\n}"
+							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\": \"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\",\r\n   \"duration\":\r\n   {\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"free_cancellation_available\": true\r\n}"
 						},
 						"url": "http://localhost:8000/api/activities"
 					},
