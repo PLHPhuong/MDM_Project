@@ -67,7 +67,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\": [\"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\"],\r\n   \"duration\":\r\n   {\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"free_cancellation_available\": true,\r\n   \"city\":\"Ha noi\"\r\n}"
+							"raw": "{\r\n   \"pick_up_included\":true,\r\n   \"description\":\"test\",\r\n   \"included\":[\r\n      \"1\",\"1\"\r\n   ],\r\n   \"not_included\":[\r\n      \"2\",\"2\"\r\n      \r\n   ],\r\n   \"accessibility\":[\r\n      \r\n   ],\r\n   \"health_safety\":[\r\n      \r\n   ],\r\n   \"languages\":[\r\n      \r\n   ],\r\n   \"additional_information\":\"\",\r\n   \"location_departure\":\"\",\r\n   \"location_end\":\"\",\r\n   \"itinerary_stops\":[\r\n      {\r\n         \"name\":\"\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"\",\r\n         \"duration\":60\r\n      }\r\n   ],\r\n   \"available\":[\r\n      {\r\n         \"start\":\"2023-06-01\",\r\n         \"end\":\"2023-09-01\"\r\n      }\r\n   ],\r\n   \"ticket\":{\r\n      \"select_time\":[\r\n         \r\n      ],\r\n      \"ticket_type\":[\r\n         \r\n      ]\r\n   }\r\n}"
 						},
 						"url": "http://localhost:8000/api/actdetail"
 					},
@@ -236,7 +236,7 @@
 			"id": "8b2d6f3d-d63e-4621-b31a-238711c4622e"
 		},
 		{
-			"name": "New Folder",
+			"name": "Service API",
 			"item": [],
 			"id": "f692e50e-8e68-4979-95f1-ad31758704e4"
 		}
