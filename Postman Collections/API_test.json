@@ -48,6 +48,48 @@
 			"id": "1a68fa0c-cce8-466e-b39b-eaf0393bb9cb"
 		},
 		{
+			"name": "Activities API Copy",
+			"item": [
+				{
+					"name": "Get all activities in database",
+					"id": "b32e658c-a224-48ea-9e65-c8777fac3622",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/activities"
+					},
+					"response": []
+				},
+				{
+					"name": "Create an new Activities",
+					"id": "b8656882-cbd8-428a-b8ef-dd1c80b9ede5",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\": [\"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\"],\r\n   \"duration\":\r\n   {\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"free_cancellation_available\": true,\r\n   \"city\":\"Ha noi\"\r\n}"
+						},
+						"url": "http://localhost:8000/api/actdetail"
+					},
+					"response": []
+				}
+			],
+			"id": "81446097-e136-45c4-b9a7-a40a491d39d1"
+		},
+		{
 			"name": "User API",
 			"item": [
 				{
@@ -205,18 +247,6 @@
 				}
 			],
 			"id": "8b2d6f3d-d63e-4621-b31a-238711c4622e"
-		},
-		{
-			"name": "New Request",
-			"id": "7bc4c49d-057f-4745-b987-55f032841c05",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"method": "GET",
-				"header": []
-			},
-			"response": []
 		}
 	]
 }
