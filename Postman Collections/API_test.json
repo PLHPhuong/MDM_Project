@@ -48,8 +48,162 @@
 			"id": "1a68fa0c-cce8-466e-b39b-eaf0393bb9cb"
 		},
 		{
-			"name": "New Folder",
-			"item": [],
+			"name": "User API",
+			"item": [
+				{
+					"name": "Register account Copy",
+					"id": "e01a1d19-c6ec-4649-8087-fccec055d7ee",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "B",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "B@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "B",
+									"type": "text"
+								},
+								{
+									"key": "avatar",
+									"value": "scr",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/user/register"
+					},
+					"response": [
+						{
+							"id": "7a15d2e7-6914-4bba-82db-4657567d96ef",
+							"name": "Register account",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "B",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "C@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "C",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"value": "scr",
+											"type": "text"
+										}
+									]
+								},
+								"url": "http://localhost:8000/api/user/register"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
+				},
+				{
+					"name": "Login user Copy",
+					"id": "28052f2c-d016-497c-8514-0a523d816067",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "A@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "A",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/user/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Get my profile (user in header) Copy",
+					"id": "b6d6f304-715c-460f-8fc3-f3af5388d8be",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user",
+								"value": "{\"_id\": \"6480541775f12d9a8d0fd8b7\",\"name\": \"A\",\"email\": \"a@gmail.com\",\"avatar\": \"scr\"}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:8000/api/user/"
+					},
+					"response": []
+				},
+				{
+					"name": "Get my profile (user id in header) Copy",
+					"id": "e4c06a8c-52ee-458b-b193-2227ddf719e0",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "user",
+								"value": "6480541775f12d9a8d0fd8b7",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:8000/api/user/"
+					},
+					"response": []
+				}
+			],
 			"id": "8b2d6f3d-d63e-4621-b31a-238711c4622e"
 		}
 	]
