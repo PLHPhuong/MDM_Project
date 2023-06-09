@@ -239,7 +239,7 @@
 			"name": "Service API",
 			"item": [
 				{
-					"name": "Create an new acttraction",
+					"name": "Create an new Activities Copy",
 					"id": "a7d67c43-6d55-4cff-8a00-3806eb031319",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
