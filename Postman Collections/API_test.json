@@ -51,19 +51,6 @@
 			"name": "Activities API Copy",
 			"item": [
 				{
-					"name": "Get all activities in database",
-					"id": "b32e658c-a224-48ea-9e65-c8777fac3622",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": "http://localhost:8000/api/activities"
-					},
-					"response": []
-				},
-				{
 					"name": "Create an new Activities",
 					"id": "b8656882-cbd8-428a-b8ef-dd1c80b9ede5",
 					"protocolProfileBehavior": {
