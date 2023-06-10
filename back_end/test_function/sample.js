@@ -1,3 +1,21 @@
+userAccountSample = [
+  {
+    name: "A",
+    email: "a@gmail.com",
+    avatar: "scr",
+  },
+  {
+    name: "B",
+    email: "b@gmail.com",
+    avatar: "scr",
+  },
+  {
+    name: "C",
+    email: "c@gmail.com",
+    avatar: "scr",
+  }
+]
+
 activities = [
     {
       name: "Guided City Sightseeing Walking Tour",
@@ -277,6 +295,11 @@ activities = [
     },
   ];
 
+
+
+
+
   module.exports = {
-    activities
+    activities,
+    userAccountSample
   }
