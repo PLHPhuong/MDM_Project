@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
   res.render("index", {
-    isIndex:true,
+    isIndex: true,
     layout: "main",
   });
 });
@@ -15,9 +15,9 @@ router.get("/404", (req, res) => {
   });
 });
 
-// router.get("/test1", (req, res) => {
-//   res.render("test", {
-//     layout: false,
-//   });
-// });
+router.get("/test1", (req, res) => {
+  res.render("test1", {
+    layout: "test1",
+  });
+});
 module.exports = router;

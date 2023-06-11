@@ -36,10 +36,10 @@ const populate_ActDetail_aggregate = [
     },
   },
   {
-    $project:{
-      detail:0
-    }
-  }
+    $project: {
+      detail: 0,
+    },
+  },
 ];
 // @desc Get an actraction
 // @route GET /api/attraction/id
@@ -147,7 +147,80 @@ const createAnActtraction = asyncHandler(async (req, res) => {
   res.status(200).json(result);
 });
 
+const updateAnActtraction = asyncHandler(async (req, res) => {
+  console.time("updateAnActtraction");
+
+  const item = await Activity.findById(req.params.id);
+
+  if (!item) {
+    return res.status(404).send();
+  }
+  // const temp = await item.populate("detail");
+  // console.log(temp);
+  // return res.status(200).json(temp);
+
+  //Update activity document
+  const updatedItem = await Activity.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: false }
+  );
+  const updateItemDetail = await ActDetail.findByIdAndUpdate(
+    item.detail,
+    req.body,
+    { new: false }
+  );
+
+  //-------------------------
+  // const newActDetailItem = await ActDetail.create({
+  //   pick_up_included,
+  //   description,
+  //   included,
+  //   not_included,
+  //   accessibility,
+  //   health_safety,
+  //   languages,
+  //   additional_information,
+  //   location_departure,
+  //   location_end,
+  //   itinerary_stops,
+  //   available,
+  //   ticket,
+  // });
+  // try {
+  //   newItemActivity = await Activity.create({
+  //     name,
+  //     short_description,
+  //     image,
+  //     duration,
+  //     free_cancellation_available,
+  //     city,
+  //     detail: newActDetailItem._id,
+  //   });
+  // } catch (error) {
+  //   res.status(400).json(error);
+  // }
+
+  // //Update activity_detail document
+  // // const detailId = await .populate("detail");
+  // console.log(typeof detailId);
+  // const updateItemDetail = await ActDetail.findByIdAndUpdate(
+  //   detailId,
+  //   req.body,
+  //   { new: false }
+  // );
+  //-------------------------
+  console.timeEnd("updateAnActtraction");
+  const tempdetail = updateItemDetail.toObject();
+  tempdetail["detailCreatedAt"] = tempdetail.createdAt;
+  tempdetail["detailUpdatedAt"] = tempdetail.updatedAt;
+  delete tempdetail.createdAt;
+  delete tempdetail.updatedAt;
+  return res.status(200).json({ ...updatedItem.toObject(), ...tempdetail });
+});
+
 module.exports = {
   getAnActtraction,
   createAnActtraction,
+  updateAnActtraction,
 };
