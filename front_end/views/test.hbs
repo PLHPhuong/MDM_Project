@@ -5,21 +5,54 @@
     <title>jQuery Test</title>
     <!-- Include jQuery library from a CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: rgba(6, 35, 114, 0.918);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        #container1 {
+            background-color: #8b4b2eea;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        #mytitle1 {
+            color: #fff;
+            size: 100px;
+            background-color: red;
+            font-size: 100px;
+        }
+
+        #mytitle2 {
+            color: #fff;
+            size: 100px;
+            background-color: greenyellow;
+            font-size: 100px;
+        }
+    </style>
 </head>
 
 <body>
     <!-- Your HTML content here -->
-    <h1>Hello, jQuery!</h1>
+    <div id="container1">
+        <div id="mytitle1">something something</div>
+        <div id="mytitle2">something something</div>
+    </div>
 
-    <!-- Example usage of jQuery -->
-    <script>
-        $(document).ready(function () {
-            // Test jQuery functionality
-            var message = 'jQuery is running!';
-            console.log(message);
-            alert(message);
-        });
-    </script>
+
+
 </body>
 
 </html>
