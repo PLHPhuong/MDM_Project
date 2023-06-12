@@ -318,7 +318,20 @@
 		},
 		{
 			"name": "New Folder",
-			"item": [],
+			"item": [
+				{
+					"name": "New Request",
+					"id": "8ae57fda-452e-4300-b7be-8a313dd78d4d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
 			"id": "2383fae7-c28c-4928-acd1-fa83d413524e"
 		}
 	]
