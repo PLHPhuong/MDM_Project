@@ -80,7 +80,7 @@
 			"name": "User API",
 			"item": [
 				{
-					"name": "Register account Copy",
+					"name": "Register account",
 					"id": "e01a1d19-c6ec-4649-8087-fccec055d7ee",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -315,6 +315,24 @@
 				}
 			],
 			"id": "7699e402-1067-41df-9e42-887f550b5940"
+		},
+		{
+			"name": "New Folder",
+			"item": [
+				{
+					"name": "New Request",
+					"id": "8ae57fda-452e-4300-b7be-8a313dd78d4d",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			],
+			"id": "2383fae7-c28c-4928-acd1-fa83d413524e"
 		}
 	]
 }
