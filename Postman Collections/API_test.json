@@ -80,7 +80,7 @@
 			"name": "User API",
 			"item": [
 				{
-					"name": "Register account Copy",
+					"name": "Register account",
 					"id": "e01a1d19-c6ec-4649-8087-fccec055d7ee",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
