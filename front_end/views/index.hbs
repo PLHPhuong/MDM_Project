@@ -1,4 +1,7 @@
-<div style="font-size: 30px;">Something something</div>
-
-
-
+<div style="font-size: 30px;">
+    {{#if user}}
+        Hello {{user.name}} !
+    {{else}}
+        Something something
+    {{/if}}
+</div>

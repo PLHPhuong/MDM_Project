@@ -1,5 +1,5 @@
 :root {
-  --box-size: 600px
+  --box-size: 450px
 }
 
 * {
@@ -30,8 +30,7 @@ body {
 .info-box {
   /* border: 3px solid white; */
   background-color: rgba(255, 255, 255, 0.966);
-  max-width: var(--box-size); 
-  min-height: fit-content;
+  width: var(--box-size); 
   padding: 20px;
   /* margin-top: 15em; */
   height: fit-content;

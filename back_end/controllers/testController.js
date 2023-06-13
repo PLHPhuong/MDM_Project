@@ -30,4 +30,5 @@ module.exports = {
     getAllAccommodations,
     updateAnAccommodations,
     removeAnAccommodation,
+    
 }

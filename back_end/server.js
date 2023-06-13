@@ -17,7 +17,8 @@ connectMongoDB();
 app.use(express.json());
 app.use(express.urlencoded({ extended: "false" }));
 
-// app.use("/api/accommodations", require("./routes/testRoutes"));
+// start with localhost:{port}
+// app.use("/api/tests", require("./routes/testRoutes"));
 app.use("/api/activities", require("./routes/activitiesRoutes"));
 app.use("/api/actdetail", require("./routes/actDetailRoutes"));
 app.use("/api/purchaseticket", require("./routes/purchaseTicketRoutes"));

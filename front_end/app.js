@@ -4,6 +4,8 @@ const dotenv = require("dotenv").config({path: "../.env"});
 const exphbs = require('express-handlebars');
 const path = require("path");
 const { engine } = require('express-handlebars');
+const cookieParser = require('cookie-parser');
+const session = require('express-session')
 const port = process.env.FRONTEND_PORT || 3000
 
 const app = express();
@@ -23,7 +25,27 @@ const hbs = exphbs.create({
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", "./views");
+
+app.use(express.json());
 app.use(express.urlencoded({extended: false,}));
+app.use(cookieParser());
+
+app.use(session({
+    secret: 'group10',
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+        expires: 600000
+    }
+}));
+
+app.use((req, res, next) => {
+    if (req.cookies.user && !req.session.user) {
+        res.clearCookie('user');        
+    }
+    next();
+});
+
 
 // app.use("/", (req,res) => {
 //     res.render("temp", {

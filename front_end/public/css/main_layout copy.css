@@ -27,6 +27,8 @@ body #header-bar {
 
 .item-1 {
     background-color: rgba(6, 35, 114, 0.993);
+    ;
+    height: 70px;
 }
 
 .item-2 {
@@ -35,7 +37,6 @@ body #header-bar {
 
 .flex-container {
     display: flex;
-
 }
 
 .flex-empty {
@@ -47,103 +48,40 @@ body #header-bar {
     margin-left: 10px;
 }
 
-
-
-#header-bar-1 {}
-
-
-#website-name {
-    grid-area: website-name;
-    justify-self: start;
-    align-self: center;
-}
-
-#user-profile {
-    grid-area: user-profile;
-    justify-self: end;
-    align-self: center;
-}
-
-#service-list {
-    grid-area: service-list;
-    justify-self: start;
-    align-self: center;
-}
-
 #header {
-    display: grid;
-    grid-template:
-        'website-name user-profile'
-        'service-list user-profile';
-    grid-gap: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
 }
 
-#website-name a {
-    color: white;
-    text-decoration: none;
-    font-size: 25px;
+#header-bar-1 {
+    
 }
 
-#service-list ul {
+#header-bar-2 {
     display: flex;
     list-style-type: none;
+    flex-direction: row;
+    margin: 0;
     padding: 0;
-    margin-bottom: 5px;
+    min-width: 100px;
 }
 
-#service-list li {
+#header-bar-2 li {
     color: white;
-    font-size: 15px;
+    font-size: 10px;
     margin-right: 10px;
-    list-style-type: none;
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
 }
-
-#service-list li a {
+#header-bar-2 li a {
     color: white;
     text-decoration: none;
 }
-
-#service-list li a:hover {
+#header-bar-2 li a:hover {
     color: cyan;
     font-weight: bold;
 }
-
-.selected-route {
-    font-weight: bold;
-}
-
-#dropdownMenuButton1 {
-    color: white;
-    font-size: 20px;
-}
-
-#login-buttom {
-    color: white;
-    font-size: 20px;
-    margin-right: 20px;
-}
-
-.avatar-img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-}
-
-.btn-transparent {
-    background-color: transparent;
-    border-color: transparent;
-}
-
-
-
-
-
-
 #intro-1 {
     --intro1-width: 1200px;
     --intro1-height: 340px;
@@ -191,4 +129,4 @@ body #header-bar {
     .greeting-child {
         font-size: 90px;
     }
-}
+} 
