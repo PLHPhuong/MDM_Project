@@ -392,7 +392,7 @@
 			"name": "Purchase Ticket",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create a purchase ticket",
 					"id": "8ae57fda-452e-4300-b7be-8a313dd78d4d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
