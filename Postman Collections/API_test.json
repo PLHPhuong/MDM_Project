@@ -413,6 +413,29 @@
 						"url": "http://localhost:8000/api/purchaseticket"
 					},
 					"response": []
+				},
+				{
+					"name": "Create a purchase ticket Copy",
+					"id": "173760a1-5726-46a1-b761-a3b8faab2f89",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cancel_request\":true\r\n}"
+						},
+						"url": "http://localhost:8000/api/purchaseticket/648a2e6f9f4250b108e51c5c"
+					},
+					"response": []
 				}
 			],
 			"id": "2383fae7-c28c-4928-acd1-fa83d413524e"
