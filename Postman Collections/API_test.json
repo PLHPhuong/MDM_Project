@@ -30,7 +30,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/activities/country/city"
+						"url": "http://localhost:8000/api/activities/continent/city"
 					},
 					"response": []
 				},
