@@ -22,6 +22,19 @@
 					"response": []
 				},
 				{
+					"name": "Get all cities by counrty in activities",
+					"id": "53e664d9-8418-492a-b55a-5608ce8688b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/activities"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new Activities",
 					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
