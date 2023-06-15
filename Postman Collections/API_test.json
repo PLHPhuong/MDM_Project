@@ -22,6 +22,19 @@
 					"response": []
 				},
 				{
+					"name": "Get all cities by counrty in activities",
+					"id": "53e664d9-8418-492a-b55a-5608ce8688b3",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/activities/continent/city"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new Activities",
 					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
@@ -41,6 +54,29 @@
 							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\": [\"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\"],\r\n   \"duration\":\r\n   {\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"free_cancellation_available\": true,\r\n   \"city\":\"Ha noi\"\r\n}"
 						},
 						"url": "http://localhost:8000/api/activities"
+					},
+					"response": []
+				},
+				{
+					"name": "Create an new acttraction (test)",
+					"id": "0d9c9271-6d3e-44a7-84b8-63e6116b8290",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Test data\",\r\n    \"short_description\": \"Test data\",\r\n    \"image\": [\r\n        \"Test data\"\r\n    ],\r\n    \"duration\": {\r\n        \"min_duration\": 180,\r\n        \"max_duration\": 480\r\n    },\r\n    \"free_cancellation_available\": true,\r\n    \"city\": \"Ha noi\",\r\n    \"country\": \"Viet Nam\",\r\n    \"pick_up_included\": true,\r\n    \"description\": \"test\",\r\n    \"included\": [\r\n        \"1\",\r\n    ],\r\n    \"not_included\": [\r\n        \"2\",\r\n    ],\r\n    \"accessibility\": [\r\n        \"3\",\r\n    ],\r\n    \"health_safety\": [\r\n        \"4\",\r\n    ],\r\n    \"languages\": [\r\n        \"5\",\r\n    ],\r\n    \"additional_information\": \"6\",\r\n    \"location_departure\": \"7\",\r\n    \"location_end\": \"8\",\r\n    \"itinerary_stops\": [\r\n        {\r\n            \"name\": \"1\",\r\n            \"admission_ticket\": false,\r\n            \"description\": \"111111111\",\r\n            \"duration\": 60\r\n        }\r\n    ],\r\n    \"available\": [\r\n        {\r\n            \"start\": \"2023-06-01\",\r\n            \"end\": \"2023-09-01\"\r\n        }\r\n    ],\r\n    \"ticket\": {\r\n        \"select_time\": [\r\n            \"08:00\",\r\n            \"09:00\",\r\n            \"10:00\",\r\n            \"13:00\",\r\n            \"13:30\",\r\n            \"14:00\",\r\n            \"14:30\"\r\n        ],\r\n        \"ticket_type\": [\r\n            {\r\n                \"name\": \"Adult (age 10–75)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 61.5\r\n            },\r\n            {\r\n                \"name\": \"Child (age 5–9)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 57.5\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						"url": "http://localhost:8000/api/acttraction"
 					},
 					"response": []
 				}
@@ -220,7 +256,7 @@
 						"header": [
 							{
 								"key": "user",
-								"value": "6480541775f12d9a8d0fd8b7",
+								"value": "6489e66e0e06f9c68a03f9d0",
 								"type": "text"
 							}
 						],
@@ -257,7 +293,30 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "http://localhost:8000/api/acttraction/64839fce2fa8cae3043406b6"
+						"url": "http://localhost:8000/api/acttraction/6489e6710e06f9c68a03fa09"
+					},
+					"response": []
+				},
+				{
+					"name": "Update an acttraction",
+					"id": "c6598c29-7c1b-4a8b-b590-b8b290df1a5a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"owner\": \"6489e66e0e06f9c68a03f9d1\",\r\n    \"detail\": \"6489e6700e06f9c68a03f9f1\",\r\n    \"duration\": {\r\n        \"min_duration\": 30,\r\n        \"max_duration\": 30\r\n    },\r\n    \"ticket\": {\r\n        \"select_time\": [\r\n            \"12:30\",\r\n            \"12:45\",\r\n            \"13:15\",\r\n            \"13:30\",\r\n            \"13:45\",\r\n            \"14:00\",\r\n            \"14:15\",\r\n            \"14:30\",\r\n            \"14:45\",\r\n            \"15:00\",\r\n            \"15:15\",\r\n            \"15:30\",\r\n            \"15:45\",\r\n            \"16:00\",\r\n            \"16:15\",\r\n            \"16:45\"\r\n        ],\r\n        \"ticket_type\": [\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f3\",\r\n                \"name\": \"Adult (age 16+)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 32.3\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f4\",\r\n                \"name\": \"Child (age 3-15)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 28.97\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f5\",\r\n                \"name\": \"Infant (age 0-2)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 0\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f6\",\r\n                \"name\": \"Carer\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 0\r\n            }\r\n        ]\r\n    }\r\n}"
+						},
+						"url": "http://localhost:8000/api/acttraction/6489e6710e06f9c68a03fa0a"
 					},
 					"response": []
 				},
@@ -278,11 +337,47 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Guided City Sightseeing Walking Tour\",\r\n    \"short_description\": \"A guided walking tour to discover some of Hanoi's top attractions\",\r\n    \"image\": [\r\n        \"https://r-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\"\r\n    ],\r\n    \"duration\": {\r\n        \"min_duration\": 180,\r\n        \"max_duration\": 480\r\n    },\r\n    \"free_cancellation_available\": true,\r\n    \"city\": \"Ha noi\",\r\n    \"pick_up_included\": true,\r\n    \"description\": \"test\",\r\n    \"included\": [\r\n        \"1\",\r\n        \"1\"\r\n    ],\r\n    \"not_included\": [\r\n        \"2\",\r\n        \"2\"\r\n    ],\r\n    \"accessibility\": [\r\n        \"3\",\r\n        \"3\"\r\n    ],\r\n    \"health_safety\": [\r\n        \"4\",\r\n        \"4\"\r\n    ],\r\n    \"languages\": [\r\n        \"5\",\r\n        \"5\"\r\n    ],\r\n    \"additional_information\": \"6\",\r\n    \"location_departure\": \"7\",\r\n    \"location_end\": \"8\",\r\n    \"itinerary_stops\": [\r\n        {\r\n            \"name\": \"1\",\r\n            \"admission_ticket\": false,\r\n            \"description\": \"111111111\",\r\n            \"duration\": 60\r\n        }\r\n    ],\r\n    \"available\": [\r\n        {\r\n            \"start\": \"2023-06-01\",\r\n            \"end\": \"2023-09-01\"\r\n        }\r\n    ],\r\n    \"ticket\": {\r\n        \"select_time\": [\r\n            \"08:00\",\r\n            \"09:00\",\r\n            \"10:00\",\r\n            \"13:00\",\r\n            \"13:30\",\r\n            \"14:00\",\r\n            \"14:30\"\r\n        ],\r\n        \"ticket_type\": [\r\n            {\r\n                \"name\": \"Adult (age 10–75)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 61.5\r\n            },\r\n            {\r\n                \"name\": \"Child (age 5–9)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 57.5\r\n            }\r\n        ]\r\n    }\r\n}"
+							"raw": "{\r\n   \"name\":\"Guided City Sightseeing Walking Tour\",\r\n   \"short_description\":\"A guided walking tour to discover some of Hanoi's top attractions\",\r\n   \"image\":[\r\n      \"https://q-xx.bstatic.com/xdata/images/xphoto/max1200/222171388.jpg?k=5e8c66b47d003a3652ad270a965c8cf854b816db44e51c99ba83e785fd3905c0&o=\"\r\n   ],\r\n   \"duration\":{\r\n      \"min_duration\":180,\r\n      \"max_duration\":480\r\n   },\r\n   \"free_cancellation_available\":true,\r\n   \"city\":\"Ha noi\",\r\n   \"country\":\"Viet Nam\",\r\n   \"continent\":\"Asia\",\r\n   \"category\":\"Tour\",\r\n   \"owner\":\"6480541775f12d9a8d0fd8b7\",\r\n   \"pick_up_included\":true,\r\n   \"refundable\":false,\r\n   \"description\":\" On this private walking tour, you’ll be given the opportunity to discover some of the most prominent attractions in Hanoi. \\\\n Together with a local guide, you’ll first make your way to Hoàn Kiếm Lake, which is considered by many locals to be the heart of the city. From here, you’ll visit other notable highlights such as the Ho Chi Minh Mausoleum Complex, Ho Chi Minh’s Stilt House, the Presidential Palace, Ho Chi Minh Museum and the One Pillar Pagoda, among other famous sights. Additionally, you’ll be able to explore to two well-preserved and iconic landmarks: the Temple of Literature and the National University Campus. \\\\n Throughout this excursion, your guide will offer an array of insights into the city’s Old Quarter, as well as commentary into Hanoi’s history, culture and architecture.\",\r\n   \"included\":[\r\n      \"Hotel pickup and drop-off\",\r\n      \"Guide services\"\r\n   ],\r\n   \"not_included\":[\r\n      \"Transportation\"\r\n   ],\r\n   \"accessibility\":[\r\n      \"Accessible to pushchairs/prams\",\r\n      \"Service animals welcome\",\r\n      \"Public transport links nearby\"\r\n   ],\r\n   \"health_safety\":[\r\n      \"Suitable for all fitness levels\"\r\n   ],\r\n   \"languages\":[\r\n      \"English (UK)\"\r\n   ],\r\n   \"additional_information\":\"Discounted or reduced-price tickets are not available for this tour. All participants should purchase a ticket. \\\\n Please follow the local COVID-19 guidelines and regulations in order to join the tour. \\\\n Please bring your ticket with you to the attraction. \\\\n Be aware that operators may cancel for unforeseen reasons. \\\\n You need to be 18 years or older to book or be accompanied by an adult. \\\\n Operated by Hanoi Private Tour Guide\",\r\n   \"location_departure\":\"Pick up point \\\\n Hanoi \\\\n Please enter your pickup details at checkout. Please note that the pickup and drop-off service is available for accommodation located in Hanoi's Old Quarter. Please also note that pickups will commence two hours before the scheduled tour time\",\r\n   \"itinerary_stops\":[\r\n      {\r\n         \"name\":\"Lake of the Restored Sword (Hoan Kiem Lake)\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"(Schedule is flexible) \\\\n Our tour guide will pick you up then we will start our Hanoi Old Quarter Walking Tour. The first destination of the tour will stop by Hoan Kiem Lake, considered the heart of Hanoi. You can observe many locals interesting activities such as playing badminton, doing exercises.\",\r\n         \"duration\":30\r\n      },\r\n      {\r\n         \"name\":\"Ho Chi Minh Mausoleum\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"Then, we head to Ho Chi Minh Mausoleum Complex. A traffic-free area of botanical gardens, monuments, memorials and pagodas. Within the complex are Ho Chi Minh's Mausoleum, Ho Chi Minh’s Stilt House and the Presidential Palace, Ho Chi Minh Museum and the One Pillar Pagoda.\",\r\n         \"duration\":60\r\n      },\r\n      {\r\n         \"name\":\"Temple of Literature & National University\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"Temple of Literature & National University is originally built as a university in 1070 dedicated to Confucius, scholars and sages, the building is extremely well preserved and is a superb example of traditional-style Vietnamese architecture. Visiting the Temple of Literature you will discover historic buildings from the Ly and Tran dynasties in a revered place that has seen thousands of doctors’ graduate in what has now become a memorial to education and literature.\",\r\n         \"duration\":60\r\n      },\r\n      {\r\n         \"name\":\"Hoa Lo Prison\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"Hoa Lo Prison ironically nicknamed the ‘Hanoi Hilton’ by US prisoners of war (POWs) during the American War. Most exhibits relate to the prison’s use up to the mid-1950s, focusing on the Vietnamese struggle for independence from France.\",\r\n         \"duration\":60\r\n      },\r\n      {\r\n         \"name\":\"Vietnam National Museum of History\",\r\n         \"admission_ticket\":false,\r\n         \"description\":\"The museum is now housing over 200,000 objects and materials which are relics of Vietnamese history flowing from pre-history to the present. Among these, many are Vietnamese antiquities and 18 are recognized as Vietnam’s national treasures.\",\r\n         \"duration\":60\r\n      }\r\n   ],\r\n   \"available\":[\r\n      {\r\n         \"start\":\"2023-06-01\",\r\n         \"end\":\"2023-09-01\"\r\n      }\r\n   ],\r\n   \"ticket\":{\r\n      \"select_time\":[\r\n         \"08:00\",\r\n         \"08:30\",\r\n         \"09:00\",\r\n         \"09:30\",\r\n         \"10:00\",\r\n         \"10:30\",\r\n         \"11:00\",\r\n         \"11:30\",\r\n         \"17:00\"\r\n      ],\r\n      \"ticket_type\":[\r\n         {\r\n            \"name\":\"Group (max. 10 people)\",\r\n            \"people_per_ticket\":10,\r\n            \"price\":5\r\n         }\r\n      ]\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": "http://localhost:8000/api/acttraction"
 					},
-					"response": []
+					"response": [
+						{
+							"id": "14af850c-b9c8-4151-a499-e3e6400f82c3",
+							"name": "Create an new acttraction",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"Test data\",\r\n    \"short_description\": \"Test data\",\r\n    \"image\": [\r\n        \"Test data\"\r\n    ],\r\n    \"duration\": {\r\n        \"min_duration\": 180,\r\n        \"max_duration\": 480\r\n    },\r\n    \"free_cancellation_available\": true,\r\n    \"city\": \"New York\",\r\n    \"country\": \"United States\",\r\n    \"continent\":\"North America\",\r\n    \"pick_up_included\": true,\r\n    \"description\": \"test\",\r\n    \"included\": [\r\n        \"1\"\r\n    ],\r\n    \"not_included\": [\r\n        \"2\"\r\n    ],\r\n    \"accessibility\": [\r\n        \"3\"\r\n    ],\r\n    \"health_safety\": [\r\n        \"4\"\r\n    ],\r\n    \"languages\": [\r\n        \"5\"\r\n    ],\r\n    \"additional_information\": \"6\",\r\n    \"location_departure\": \"7\",\r\n    \"location_end\": \"8\",\r\n    \"itinerary_stops\": [\r\n        {\r\n            \"name\": \"1\",\r\n            \"admission_ticket\": false,\r\n            \"description\": \"111111111\",\r\n            \"duration\": 60\r\n        }\r\n    ],\r\n    \"available\": [\r\n        {\r\n            \"start\": \"2023-06-01\",\r\n            \"end\": \"2023-09-01\"\r\n        }\r\n    ],\r\n    \"ticket\": {\r\n        \"select_time\": [\r\n            \"08:00\"\r\n        ],\r\n        \"ticket_type\": [\r\n            {\r\n                \"name\": \"Adult (age 10–75)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 61.5\r\n            },\r\n            {\r\n                \"name\": \"Child (age 5–9)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 57.5\r\n            }\r\n        ]\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:8000/api/acttraction"
+							},
+							"_postman_previewlanguage": null,
+							"header": null,
+							"cookie": [],
+							"responseTime": null,
+							"body": null
+						}
+					]
 				}
 			],
 			"id": "f692e50e-8e68-4979-95f1-ad31758704e4"
@@ -312,22 +407,79 @@
 						"url": "http://localhost:8000/api/purchaseticket"
 					},
 					"response": []
+				},
+				{
+					"name": "Create a new ticket purchase Copy",
+					"id": "b524136c-096b-4898-a4e8-4d6586c9785f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer\":\"6480541775f12d9a8d0fd8b7\",\r\n   \"activities\":\"64839fce2fa8cae3043406b6\",\r\n   \"select_time\":\"08:00\",\r\n   \"tickets\":[\r\n      {\r\n         \"_id\":\"64839fce2fa8cae3043406ae\",\r\n         \"name\":\"Adult (age 10–75)\",\r\n         \"people_per_ticket\":1,\r\n         \"price\":61.5,\r\n         \"amount\":1\r\n      }\r\n   ]\r\n}"
+						},
+						"url": "http://localhost:8000/api/purchaseticket/648b124b8e3933a343ce4ec8"
+					},
+					"response": []
 				}
 			],
 			"id": "7699e402-1067-41df-9e42-887f550b5940"
 		},
 		{
-			"name": "New Folder",
+			"name": "Purchase Ticket",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create a purchase ticket",
 					"id": "8ae57fda-452e-4300-b7be-8a313dd78d4d",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer\":\"6489e66e0e06f9c68a03f9d2\",\r\n   \"activities\":\"6489e6710e06f9c68a03fa09\",\r\n   \"select_time\":\"08:00\",\r\n   \"happen_on_date\":\"2023-08-01\",\r\n   \"tickets\":[\r\n      {\r\n         \"_id\":\"6489e6700e06f9c68a03f9ee\",\r\n         \"name\":\"2 adults (price per person) (11-99)\",\r\n         \"people_per_ticket\":2,\r\n         \"price\":74,\r\n         \"amount\":1\r\n      }\r\n   ]\r\n}"
+						},
+						"url": "http://localhost:8000/api/purchaseticket"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a purchase ticket Copy",
+					"id": "173760a1-5726-46a1-b761-a3b8faab2f89",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"cancel_request\":true\r\n}"
+						},
+						"url": "http://localhost:8000/api/purchaseticket/648a2e6f9f4250b108e51c5c"
 					},
 					"response": []
 				}
