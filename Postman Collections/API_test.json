@@ -407,6 +407,29 @@
 						"url": "http://localhost:8000/api/purchaseticket"
 					},
 					"response": []
+				},
+				{
+					"name": "Create a new ticket purchase Copy",
+					"id": "b524136c-096b-4898-a4e8-4d6586c9785f",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"buyer\":\"6480541775f12d9a8d0fd8b7\",\r\n   \"activities\":\"64839fce2fa8cae3043406b6\",\r\n   \"select_time\":\"08:00\",\r\n   \"tickets\":[\r\n      {\r\n         \"_id\":\"64839fce2fa8cae3043406ae\",\r\n         \"name\":\"Adult (age 10–75)\",\r\n         \"people_per_ticket\":1,\r\n         \"price\":61.5,\r\n         \"amount\":1\r\n      }\r\n   ]\r\n}"
+						},
+						"url": "http://localhost:8000/api/purchaseticket/648b124b8e3933a343ce4ec8"
+					},
+					"response": []
 				}
 			],
 			"id": "7699e402-1067-41df-9e42-887f550b5940"
