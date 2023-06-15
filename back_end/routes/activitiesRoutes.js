@@ -4,5 +4,6 @@ const activitiesController = require('../controllers/activitiesController')
 
 router.get('/',activitiesController.getAllActivities)
 router.post('/',activitiesController.createAnActivities)
+router.get('/continent/city',activitiesController.getCitiesByContinent)
 
 module.exports = router

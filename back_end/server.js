@@ -7,16 +7,17 @@ const connectMongoDB = require("./config/mongodb");
 const dotenv = require("dotenv").config();
 const port = process.env.BACKEND_PORT || 5000;
 const app = express();
-const addSample = require("./test_function/ActivitiesSample")
+const {AddAttraction } = require("./test_function/ActivitiesSample")
 
 connectMongoDB();
-// addSample();
-// const {test_fFindMissingFieldNested} = require('./controllers/unity_used/testing_unity_script')
-// test_fFindMissingFieldNested()
+
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: "false" }));
 
+
+AddAttraction()
 // start with localhost:{port}
 // app.use("/api/tests", require("./routes/testRoutes"));
 app.use("/api/activities", require("./routes/activitiesRoutes"));

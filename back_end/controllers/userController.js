@@ -67,6 +67,17 @@ const login = asyncHandler(async (req, res) => {
 // @access Private
 const getMe = asyncHandler(async (req, res) => {
   // cmdline what is not needed
+  await req.user.populate([{
+    path: 'tickets',
+    model: 'PurchaseTicket',
+  },{
+    path: 'activities',
+    model: 'Activity',
+    populate: {
+      path: 'ticket_sales',
+      model: "PurchaseTicket"
+    }
+  }])
   res.status(200).json(req.user);
 });
 

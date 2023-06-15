@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Activity = require("../../models/activitiesModel");
 const ActDetail = require("../../models/actDetailModel");
 const mongoose = require("mongoose");
-
+const _ = require("lodash");  
 const populate_ActDetail_aggregate = [
   {
     $lookup: {
@@ -18,14 +18,17 @@ const populate_ActDetail_aggregate = [
   {
     $addFields: {
       pick_up_included: "$detail.pick_up_included",
+      refundable: "$detail.refundable",
       description: "$detail.description",
       included: "$detail.included",
       not_included: "$detail.not_included",
       accessibility: "$detail.accessibility",
       health_safety: "$detail.health_safety",
+      whyvisit: "$detail.whyvisit",
+      restriction: "$detail.restriction",
       languages: "$detail.languages",
       additional_information: "$detail.additional_information",
-      ocation_departure: "$detail.location_departure",
+      location_departure: "$detail.location_departure",
       location_end: "$detail.location_end",
       itinerary_stops: "$detail.itinerary_stops",
       available: "$detail.available",
@@ -45,7 +48,7 @@ const populate_ActDetail_aggregate = [
 // @route GET /api/attraction/id
 // @access Private
 const getAnActtraction = asyncHandler(async (req, res) => {
-  console.time("getAnActtraction"); // Start the timer
+  // console.time("getAnActtraction"); // Start the timer
   // // Solution 1 //////////////////////////////////////////////////////////////////////
   // const item = await Activity.findById(req.params.id);
   // let result; //= !item ? { message: "not found" } : await item.populate("detail");
@@ -67,7 +70,7 @@ const getAnActtraction = asyncHandler(async (req, res) => {
   ]);
   const result = item ? item : { message: "not found" };
 
-  console.timeEnd("getAnActtraction");
+  // console.timeEnd("getAnActtraction");
 
   return res.status(200).json(result);
 });
@@ -76,7 +79,7 @@ const getAnActtraction = asyncHandler(async (req, res) => {
 // @route POST /api/attraction/
 // @access Private
 const createAnActtraction = asyncHandler(async (req, res) => {
-  console.time("createAnActtraction");
+  // console.time("createAnActtraction");
   const errorActDetail = await ActDetail.validate(req.body);
   if (errorActDetail) {
     res.status(400).json(errorActDetail.message);
@@ -86,92 +89,22 @@ const createAnActtraction = asyncHandler(async (req, res) => {
     res.status(400).json(errorActivity.message);
   }
 
-  const {
-    pick_up_included,
-    description,
-    included,
-    not_included,
-    accessibility,
-    health_safety,
-    languages,
-    additional_information,
-    location_departure,
-    location_end,
-    itinerary_stops,
-    available,
-    ticket,
-  } = req.body;
+  // const {
+  //   pick_up_included,
+  //   description,
+  //   included,
+  //   not_included,
+  //   accessibility,
+  //   health_safety,
+  //   languages,
+  //   additional_information,
+  //   location_departure,
+  //   location_end,
+  //   itinerary_stops,
+  //   available,
+  //   ticket,
+  // } = req.body;
 
-  const newActDetailItem = await ActDetail.create({
-    pick_up_included,
-    description,
-    included,
-    not_included,
-    accessibility,
-    health_safety,
-    languages,
-    additional_information,
-    location_departure,
-    location_end,
-    itinerary_stops,
-    available,
-    ticket,
-  });
-
-  const {
-    name,
-    short_description,
-    image,
-    duration,
-    free_cancellation_available,
-    city,
-  } = req.body;
-  let newItemActivity = null;
-
-  try {
-    newItemActivity = await Activity.create({
-      name,
-      short_description,
-      image,
-      duration,
-      free_cancellation_available,
-      city,
-      detail: newActDetailItem._id,
-    });
-  } catch (error) {
-    res.status(400).json(error);
-  }
-  result = await newItemActivity.populate("detail");
-  console.timeEnd("createAnActtraction");
-
-  res.status(200).json(result);
-});
-
-const updateAnActtraction = asyncHandler(async (req, res) => {
-  console.time("updateAnActtraction");
-
-  const item = await Activity.findById(req.params.id);
-
-  if (!item) {
-    return res.status(404).send();
-  }
-  // const temp = await item.populate("detail");
-  // console.log(temp);
-  // return res.status(200).json(temp);
-
-  //Update activity document
-  const updatedItem = await Activity.findByIdAndUpdate(
-    req.params.id,
-    req.body,
-    { new: false }
-  );
-  const updateItemDetail = await ActDetail.findByIdAndUpdate(
-    item.detail,
-    req.body,
-    { new: false }
-  );
-
-  //-------------------------
   // const newActDetailItem = await ActDetail.create({
   //   pick_up_included,
   //   description,
@@ -187,36 +120,89 @@ const updateAnActtraction = asyncHandler(async (req, res) => {
   //   available,
   //   ticket,
   // });
-  // try {
-  //   newItemActivity = await Activity.create({
-  //     name,
-  //     short_description,
-  //     image,
-  //     duration,
-  //     free_cancellation_available,
-  //     city,
-  //     detail: newActDetailItem._id,
-  //   });
-  // } catch (error) {
-  //   res.status(400).json(error);
-  // }
+  const newActDetailItem = await ActDetail.create(req.body)
+  
+  const {
+    name,
+    short_description,
+    image,
+    duration,
+    free_cancellation_available,
+    city,
+    country,
+    continent,
+    owner,
+  } = req.body;
 
-  // //Update activity_detail document
-  // // const detailId = await .populate("detail");
-  // console.log(typeof detailId);
-  // const updateItemDetail = await ActDetail.findByIdAndUpdate(
-  //   detailId,
-  //   req.body,
-  //   { new: false }
-  // );
-  //-------------------------
-  console.timeEnd("updateAnActtraction");
-  const tempdetail = updateItemDetail.toObject();
+  let newItemActivity = null;
+  try {
+    newItemActivity = await Activity.create({
+      name,
+      short_description,
+      image,
+      duration,
+      free_cancellation_available,
+      city,
+      country,
+      continent,
+      owner,
+      detail: newActDetailItem._id,
+    });
+    // newItemActivity =  await Activity.create(req.body)
+  } catch (error) {
+    console.log(error)
+    res.status(400).json(error);
+    return
+  }
+  
+  const tempdetail = newActDetailItem.toObject();
+  const tempactivites = newItemActivity.toObject()
   tempdetail["detailCreatedAt"] = tempdetail.createdAt;
   tempdetail["detailUpdatedAt"] = tempdetail.updatedAt;
   delete tempdetail.createdAt;
   delete tempdetail.updatedAt;
-  return res.status(200).json({ ...updatedItem.toObject(), ...tempdetail });
+  
+
+  result = _.merge(tempactivites,tempdetail);
+  // console.timeEnd("createAnActtraction");
+
+  res.status(200).json(result);
+});
+
+const updateAnActtraction = asyncHandler(async (req, res) => {
+  // console.time("updateAnActtraction");
+
+  const item = await Activity.findById(req.params.id);
+
+  if (!item) {
+    return res.status(404).send();
+  }
+
+  //Update activity document
+  const updatedItem = await Activity.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: false }
+  );
+  const updateItemDetail = await ActDetail.findByIdAndUpdate(
+    item.detail,
+    req.body,
+    { new: false }
+  );
+  // console.timeEnd("updateAnActtraction");
+  // const tempdetail = updateItemDetail.toObject();
+  // tempdetail["detailCreatedAt"] = tempdetail.createdAt;
+  // tempdetail["detailUpdatedAt"] = tempdetail.updatedAt;
+  // delete tempdetail.createdAt;
+  // delete tempdetail.updatedAt;
+  // return res.status(200).json({ ...updatedItem.toObject(), ...tempdetail });
+
+
+  const result = await Activity.aggregate([
+    { $match: { _id: new mongoose.Types.ObjectId(req.params.id) } },
+    ...populate_ActDetail_aggregate,
+  ]);
+  return res.status(200).json(result)
 });
 
 module.exports = {

@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
+// const PurchaseTicket = require("./purchaseTicketModel");
+// const Activity = require("./activitiesModel");
 const validator = require("validator");
-// regex_timeformat = /^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$/
-// console.log(regex_settimeformat.test("01:00"));
-// references for attribute:  https://www.booking.com/attractions/vn/pr7rasvmt1cp-guided-city-sightseeing-walking-tour.html?aid=304142&label=gen173nr-1FCBkoggI46AdIM1gEaPQBiAEBmAExuAEXyAEM2AEB6AEB-AECiAIBqAIDuALQ6rGjBsACAdICJDI5NWEzMDc1LWU1ZDAtNDcwMC05N2YxLTZjNjNkYjU0NjJkNdgCBeACAQ&source=searchresults-product-card&ufi=-3714993&date=2023-07-01&tickets=TOw5NodqFIka%3A1&start_time=08%3A00&ticket_type=OFtyvaXGLrAA
+
 
 const userSchema = mongoose.Schema(
   {
@@ -25,14 +25,43 @@ const userSchema = mongoose.Schema(
     },
     avatar: {
       type: String,
+      default: "/img/sample_avatar.jpg",
+    },
+    tickets: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "PurchaseTicket" }],
+      default: [],
+    },
+    activities: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Activity" }],
+      default: [],
     },
   },
   { timestamps: true }
 );
 
-userSchema.pre("save", function (next) {
+userSchema.pre("save", async function (next) {
+  // // check tickets existed
+  // if (this.tickets && this.tickets.length > 0) {
+  //   const found = await PurchaseTicket.find({ _id: { $in: this.tickets } });
+  //   if (found.length != this.tickets.length) {
+  //     const missing = this.tickets.filters((item) => !found.includes(item));
+  //     this.invalidate("tickets", `tickets: ${missing.join(" ")} is not existed`);
+  //     return next(new Error("Validation error"));
+  //   }
+  // }
+
+  // // check activities existed
+  // if (this.activities && this.activities.length > 0) {
+  //   const found = await Activity.find({ _id: { $in: this.activities } });
+  //   if (found.length != this.tickets.length) {
+  //     const missing = this.activities.filters((item) => !found.includes(item));
+  //     this.invalidate("activities", `activities: ${missing.join(" ")} is not existed`);
+  //     return next(new Error("Validation error"));
+  //   }
+  // }
+
+  // Extract the name from the email
   if (!this.name) {
-    // Extract the name from the email
     const name = this.email.substring(0, this.email.indexOf("@"));
     this.name = name;
   }
