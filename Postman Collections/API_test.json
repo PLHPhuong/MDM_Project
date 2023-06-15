@@ -431,7 +431,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"buyer\":\"6480541775f12d9a8d0fd8b7\",\r\n   \"activities\":\"6489e6710e06f9c68a03fa0a\",\r\n   \"select_time\":\"12:30\",\r\n   \"happen_on_date\":\"2023-08-01\",\r\n   \"tickets\":[\r\n      {\r\n         \"_id\":\"6489e6700e06f9c68a03f9f3\",\r\n         \"name\":\"Adult (age 16+)\",\r\n         \"people_per_ticket\":1,\r\n         \"price\":32.3,\r\n         \"amount\":1\r\n      }\r\n   ]\r\n}"
+							"raw": "{\r\n   \"buyer\":\"6489e66e0e06f9c68a03f9d2\",\r\n   \"activities\":\"6489e6710e06f9c68a03fa09\",\r\n   \"select_time\":\"08:00\",\r\n   \"happen_on_date\":\"2023-08-01\",\r\n   \"tickets\":[\r\n      {\r\n         \"_id\":\"6489e6700e06f9c68a03f9ee\",\r\n         \"name\":\"2 adults (price per person) (11-99)\",\r\n         \"people_per_ticket\":2,\r\n         \"price\":74,\r\n         \"amount\":1\r\n      }\r\n   ]\r\n}"
 						},
 						"url": "http://localhost:8000/api/purchaseticket"
 					},
