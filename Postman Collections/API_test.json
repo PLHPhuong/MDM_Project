@@ -298,6 +298,29 @@
 					"response": []
 				},
 				{
+					"name": "Update an acttraction",
+					"id": "c6598c29-7c1b-4a8b-b590-b8b290df1a5a",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "http://localhost:8000/api/acttraction/6489e6710e06f9c68a03fa09"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new acttraction",
 					"id": "a7d67c43-6d55-4cff-8a00-3806eb031319",
 					"protocolProfileBehavior": {
