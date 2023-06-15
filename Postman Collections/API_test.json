@@ -304,7 +304,7 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -314,9 +314,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": ""
+							"raw": "{\r\n    \"owner\": \"6489e66e0e06f9c68a03f9d1\",\r\n    \"detail\": \"6489e6700e06f9c68a03f9f1\",\r\n    \"duration\": {\r\n        \"min_duration\": 30,\r\n        \"max_duration\": 30\r\n    },\r\n    \"ticket\": {\r\n        \"select_time\": [\r\n            \"12:30\",\r\n            \"12:45\",\r\n            \"13:15\",\r\n            \"13:30\",\r\n            \"13:45\",\r\n            \"14:00\",\r\n            \"14:15\",\r\n            \"14:30\",\r\n            \"14:45\",\r\n            \"15:00\",\r\n            \"15:15\",\r\n            \"15:30\",\r\n            \"15:45\",\r\n            \"16:00\",\r\n            \"16:15\",\r\n            \"16:45\"\r\n        ],\r\n        \"ticket_type\": [\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f3\",\r\n                \"name\": \"Adult (age 16+)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 32.3\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f4\",\r\n                \"name\": \"Child (age 3-15)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 28.97\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f5\",\r\n                \"name\": \"Infant (age 0-2)\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 0\r\n            },\r\n            {\r\n                \"_id\": \"6489e6700e06f9c68a03f9f6\",\r\n                \"name\": \"Carer\",\r\n                \"people_per_ticket\": 1,\r\n                \"price\": 0\r\n            }\r\n        ]\r\n    }\r\n}"
 						},
-						"url": "http://localhost:8000/api/acttraction/6489e6710e06f9c68a03fa09"
+						"url": "http://localhost:8000/api/acttraction/6489e6710e06f9c68a03fa0a"
 					},
 					"response": []
 				},
