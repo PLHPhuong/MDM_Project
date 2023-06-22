@@ -497,8 +497,39 @@
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
-						"url": "http://localhost:8003/api/comment"
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "activities_id",
+									"value": "a1",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "u1",
+									"type": "text"
+								},
+								{
+									"key": "user_name",
+									"value": "uuuu",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "sdawqeaverfweqwe",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8002/api/comment"
 					},
 					"response": []
 				}
