@@ -532,6 +532,29 @@
 						"url": "http://localhost:8002/api/comment"
 					},
 					"response": []
+				},
+				{
+					"name": "get comments by Activities Id",
+					"id": "603cfbbe-0b27-4ef5-9ac5-ae7c5016a7a4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:8002/api/comment/activity/u1"
+					},
+					"response": []
 				}
 			],
 			"id": "29d119c4-0393-44f3-a883-079e374c478f"
