@@ -509,12 +509,12 @@
 							"urlencoded": [
 								{
 									"key": "activities_id",
-									"value": "a3",
+									"value": "1",
 									"type": "text"
 								},
 								{
 									"key": "user_id",
-									"value": "u1",
+									"value": "1",
 									"type": "text"
 								},
 								{
@@ -552,7 +552,7 @@
 							"mode": "urlencoded",
 							"urlencoded": []
 						},
-						"url": "http://localhost:8002/api/comment"
+						"url": "http://localhost:8002/api/comment/activity/a1"
 					},
 					"response": []
 				}
