@@ -490,7 +490,7 @@
 			"name": "Comment API",
 			"item": [
 				{
-					"name": "New Request",
+					"name": "Create a comment",
 					"id": "fae11c4e-cf23-4baa-aa1c-14e76fcc4088",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
