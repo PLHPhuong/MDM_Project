@@ -534,7 +534,7 @@
 					"response": []
 				},
 				{
-					"name": "get comments by Activities Id",
+					"name": "Create a comment Copy",
 					"id": "603cfbbe-0b27-4ef5-9ac5-ae7c5016a7a4",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
@@ -552,7 +552,7 @@
 							"mode": "urlencoded",
 							"urlencoded": []
 						},
-						"url": "http://localhost:8002/api/comment/u1"
+						"url": "http://localhost:8002/api/comment"
 					},
 					"response": []
 				}
