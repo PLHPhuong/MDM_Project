@@ -509,12 +509,12 @@
 							"urlencoded": [
 								{
 									"key": "activities_id",
-									"value": "1",
+									"value": "a3",
 									"type": "text"
 								},
 								{
 									"key": "user_id",
-									"value": "1",
+									"value": "u1",
 									"type": "text"
 								},
 								{
