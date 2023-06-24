@@ -35,6 +35,40 @@
 					"response": []
 				},
 				{
+					"name": "search activities",
+					"id": "78cea825-b49f-47d2-b7eb-e2bb702c76e1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "city",
+									"value": "New York",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "search-text",
+									"value": "Ha noi",
+									"type": "text"
+								},
+								{
+									"key": "selected-date",
+									"value": "2023-06-24",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/activities/search"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new Activities",
 					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
@@ -509,7 +543,7 @@
 							"urlencoded": [
 								{
 									"key": "activities_id",
-									"value": "a1",
+									"value": "6489e6710e06f9c68a03fa0c",
 									"type": "text"
 								},
 								{
@@ -525,6 +559,11 @@
 								{
 									"key": "comment",
 									"value": "sdawqeaverfweqwe",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "3",
 									"type": "text"
 								}
 							]
@@ -552,7 +591,7 @@
 							"mode": "urlencoded",
 							"urlencoded": []
 						},
-						"url": "http://localhost:8002/api/comment/activity/a1"
+						"url": "http://localhost:8002/api/comment/activity/6489e6710e06f9c68a03fa0c"
 					},
 					"response": []
 				}
