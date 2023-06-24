@@ -48,7 +48,18 @@
 							"urlencoded": [
 								{
 									"key": "city",
-									"value": "London",
+									"value": "New York",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "search-text",
+									"value": "Ha noi",
+									"type": "text"
+								},
+								{
+									"key": "selected-date",
+									"value": "2023-06-24",
 									"type": "text"
 								}
 							]
