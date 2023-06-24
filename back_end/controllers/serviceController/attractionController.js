@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Activity = require("../../models/activitiesModel");
 const ActDetail = require("../../models/actDetailModel");
 const mongoose = require("mongoose");
-const _ = require("lodash");  
+const _ = require("lodash");
 const populate_ActDetail_aggregate = [
   {
     $lookup: {
@@ -44,6 +44,19 @@ const populate_ActDetail_aggregate = [
     },
   },
 ];
+
+// @desc Get all actractions
+// @route GET /api/attraction
+// @access Private
+const getAllActtractions = asyncHandler(async (req, res) => {
+  const item = await Activity.find({});
+  const result = item ? item : { message: "not found" };
+
+  // console.timeEnd("getAnActtraction");
+
+  return res.status(200).json(result);
+});
+
 // @desc Get an actraction
 // @route GET /api/attraction/id
 // @access Private
@@ -120,8 +133,8 @@ const createAnActtraction = asyncHandler(async (req, res) => {
   //   available,
   //   ticket,
   // });
-  const newActDetailItem = await ActDetail.create(req.body)
-  
+  const newActDetailItem = await ActDetail.create(req.body);
+
   const {
     name,
     short_description,
@@ -150,20 +163,19 @@ const createAnActtraction = asyncHandler(async (req, res) => {
     });
     // newItemActivity =  await Activity.create(req.body)
   } catch (error) {
-    console.log(error)
+    console.log(error);
     res.status(400).json(error);
-    return
+    return;
   }
-  
+
   const tempdetail = newActDetailItem.toObject();
-  const tempactivites = newItemActivity.toObject()
+  const tempactivites = newItemActivity.toObject();
   tempdetail["detailCreatedAt"] = tempdetail.createdAt;
   tempdetail["detailUpdatedAt"] = tempdetail.updatedAt;
   delete tempdetail.createdAt;
   delete tempdetail.updatedAt;
-  
 
-  result = _.merge(tempactivites,tempdetail);
+  result = _.merge(tempactivites, tempdetail);
   // console.timeEnd("createAnActtraction");
 
   res.status(200).json(result);
@@ -197,15 +209,15 @@ const updateAnActtraction = asyncHandler(async (req, res) => {
   // delete tempdetail.updatedAt;
   // return res.status(200).json({ ...updatedItem.toObject(), ...tempdetail });
 
-
   const result = await Activity.aggregate([
     { $match: { _id: new mongoose.Types.ObjectId(req.params.id) } },
     ...populate_ActDetail_aggregate,
   ]);
-  return res.status(200).json(result)
+  return res.status(200).json(result);
 });
 
 module.exports = {
+  getAllActtractions,
   getAnActtraction,
   createAnActtraction,
   updateAnActtraction,

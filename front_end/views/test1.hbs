@@ -1,1 +1,338 @@
-<div style="font-size: 30px;">Update an attraction</div>
+<div style="font-size: 30px;">{{ data.title }}</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        {{#each data.attractionList}}
+          <tr class="record">
+            <td scope="row">{{ _id }}</td>
+            <td scope="row">{{ name }}</td>
+            <td><button id="btn-update" data-id="{{ _id }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ _id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+            </svg>&nbsp;Update</button>&nbsp;
+            <button  id="btn-delete" data-id="{{ _id }}" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+            </svg>&nbsp;Delete</button>
+            </td>
+          </tr>
+        {{/each}}
+        </tbody>
+      </table>
+
+      <button id="btn-create" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg>&nbsp;Create</button>
+      
+      <!-- Modal for creation -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">CREATE an attraction</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form method="post" action="/attraction/submit">
+                {{!-- <input type="hidden" id="record-id" name="_id"> --}}
+                <table class="table table-light table-sm">
+                  <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name" name="name" required></td>
+                  </tr>
+                  <tr>
+                    <td><label for="short_description" required>Short description:</label></td>
+                    <td><textarea id="short_description" name="short_description"></textarea></td>
+                  </tr>
+                  {{!-- <tr>
+                    <td><label for="image" >Image link:</label></td>
+                    <td><input type="text" id="image" name="image"></td>
+                  <tr> --}}
+                    <td><label for="min_duration" required>Minimum duration:</label></td>
+                    <td><input type="number" id="min_duration" name="min_duration"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="max_duration" required>Maximum duration:</label></td>
+                    <td><input type="number" id="max_duration" name="max_duration"></td>
+                  </tr>
+
+                  <tr>
+                    <td><label for="free_cancellation_available">Free cancellation available:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="free_cancellation_available" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="free_cancellation_available" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="city" required>City:</label></td>
+                    <td><input type="text" id="city" name="city"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="country">Country:</label></td>
+                    <td><input type="text" id="country" name="country"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="continent" required>Continent:</label></td>
+                    <td><input type="text" id="continent" name="continent"></td>
+                  </tr>
+                  {{!-- <tr>
+                    <td><label for="average-cost">Average cost:</label></td>
+                    <td><input type="number" id="average_cost"></td>
+                  </tr> --}}
+                  
+                  <input type="hidden" id="owner" name="owner"></input> {{!-- USER FROM SESSION ================================================================================================================                  --}}
+                  <tr>
+                    <td><label for="pick_up_included">Pick up included:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="pick_up_included" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="pick_up_included" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="refundable">Refundable:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="refundable" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="refundable" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="description" required>Description:</label></td>
+                    <td><textarea id="description" name="description"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="additional_information">Additional information:</label></td>
+                    <td><textarea id="additional_information" name="additional_information"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="location_departure" required>Location departure:</label></td>
+                    <td><textarea id="location_departure" name="location_departure"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="location_end">Location end:</label></td>
+                    <td><textarea id="location_end" name="location_end"></textarea></td>
+                  </tr>
+                </table>
+                {{!-- included, not-included, accessibility, health_safety, whyvisit, restriction, languages --}}
+                {{!-- itinerary-stops --}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Add attraction</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Modal for updation-->
+      {{#each data.attractionList}}
+      <div class="modal fade" id="exampleModal-{{ _id }}" data-id="{{ _id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">UPDATE attraction: {{ _id }}</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>{{ _id }}</div>
+              <form method="post" action = "/attraction/submit/{{ _id }}">
+                <input type="hidden" id="record-id" name="_id" value="{{ _id }}">
+                <table class="table table-light table-sm">
+                  <tr>
+                    <td><label for="name">Name:</label></td>
+                    <td><input type="text" id="name"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="short-description">Short description:</label></td>
+                    <td><textarea id="short-description"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="min-duration">Minimum duration:</label></td>
+                    <td><input type="number" id="min-duration"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="max-duration">Maximum duration:</label></td>
+                    <td><input type="number" id="max-duration"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="free-cancellation-available">Free cancellation available:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="free-cancellation-available" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="free-cancellation-available" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="city">City:</label></td>
+                    <td><input type="text" id="city"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="country">Country:</label></td>
+                    <td><input type="text" id="country"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="continent">Continent:</label></td>
+                    <td><input type="text" id="continent"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="average-cost">Average cost:</label></td>
+                    <td><input type="number" id="average_cost"></td>
+                  </tr>
+                  <tr>
+                    <td><label for="pick-up-included">Pick up included:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="pick-up-included" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="pick-up-included" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="refundable">Refundable:</label></td>
+                    <td>
+                      <div class="input-group">
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="true" name="refundable" value="true">
+                            &nbsp;<label for="true">True</label>
+                        </div>
+                        <div class="input-group-text">
+                          <input class="form-check-input mt-0" type="radio" id="false" name="refundable" value="false">
+                            &nbsp;<label for="false">False</label>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="description">Description:</label></td>
+                    <td><textarea id="description"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="additional-information">Additional information:</label></td>
+                    <td><textarea id="additional-information"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td><label for="location-departure">Location departure:</label></td>
+                    <td><textarea id="location-departure"></textarea></td>
+                  </tr>
+                </table>
+                {{!-- included, not-included, accessibility, health_safety, whyvisit, restriction, languages --}}
+                {{!-- itinerary-stops --}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      {{/each}}
+
+      {{!-- <div id="modal-update" class="modal" style="width: 800px;">
+        <div class="modal-content" aria-hidden="true">
+            <span class="close">
+              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+              </svg>
+            </span>
+            <h2>Update Record</h2>
+                <div>
+                    <span class="close">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </span>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+        </div>
+      </div> --}}
+
+      
+      {{!-- {{#if updateSuccessful}}
+      <div type="hiden" id="update-result">{{updateSuccessful}}</div>
+      {{/if}} --}}
+      <script>
+          /*$(document).ready(function() {
+            var temp = $('#update-result').text();
+            if (temp == "true"){
+              alert('Update successful!');
+            }
+            else alert('Failed@');
+          });*/
+        $(document).ready(function() {
+            $('.record #btn-update').click(function() {
+                var attractionId = $(this).data('id');
+                // Update some info
+                $('#record-id').val(attractionId);
+                $('#modal-update').show();
+                // ----------
+                //alert('Update button clicked for record:\n' + attractionId);
+            });
+
+            $('.modal .close').click(function() {
+                $('.modal').hide();
+            });
+            
+        });
+
+        $(document).ready(function() {
+            $('.record #btn-delete').click(function() {
+                var attractionId = $(this).data('id');
+                // Delete some info
+                
+                // ----------
+                alert('Delete button clicked for record:\n' + attractionId);
+            });
+        });
+      </script>
+    </div>
+  </div>
+</div>
