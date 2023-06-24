@@ -37,7 +37,7 @@ const populate_ActDetail_aggregate = [
       detailUpdatedAt: "$detail.updatedAt",
       detail__v: "$detail.__v",
     },
-  },
+  }, 
   {
     $project: {
       detail: 0,

@@ -17,6 +17,8 @@
     <!-- web css -->
     <link href="/css/main_layout.css" rel="stylesheet" type="text/css" />
     <link href="/css/paging.css" rel="stylesheet" type="text/css" />
+    <link href="/css/attraction.css" rel="stylesheet" type="text/css" />
+
 
     <!-- Jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -77,13 +79,15 @@
         {{#if isIndex}}
         {{> _greeting }}
         {{/if}}
-        <div class="flex-container">
+
+         {{{body}}}
+        {{!-- <div class="flex-container">
             <div class="flex-empty"></div>
             <div class="flex-content">
-                {{{body}}}
+               {{{body}}}
             </div>
             <div class="flex-empty"></div>
-        </div>
+        </div> --}}
     </div>
     {{!--
     <script>

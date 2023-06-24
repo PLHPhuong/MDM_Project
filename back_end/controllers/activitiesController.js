@@ -20,6 +20,17 @@ const getAnActivities = asyncHandler(async (req, res) => {
   return res.status(200).json(result);
 });
 
+
+// @desc Get an activities by id
+// @route GET /api/attraction/id
+// @access Private
+const getAnActivitiesByUserId = asyncHandler(async (req, res) => {
+  const result = (await Activity.find({owner:req.params.id})) || {
+    message: "not found",
+  };
+  return res.status(200).json(result);
+});
+
 // @desc Create a activities
 // @route POST /api/activities
 // @access Private
@@ -54,7 +65,7 @@ const createAnActivities = asyncHandler(async (req, res) => {
 // @route GET /api/activities/continent/city
 // @access Private
 const getCitiesByContinent = asyncHandler(async (req, res) => {
-  console.time("getCitiesByContinent")
+  // console.time("getCitiesByContinent")
   const data = await Activity.aggregate([
     {
       $group: {
@@ -79,13 +90,17 @@ const getCitiesByContinent = asyncHandler(async (req, res) => {
       const capitalizedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase());
       return capitalizedWords.join(' ');
     });
-  
+    const citiesId = obj.cities.map(city => {
+      return city.toLowerCase().replace(/\s/g, "");
+    });
     return {
       cities: capitalizedCities,
-      continent: obj.continent
+      cities_id: citiesId,
+      continent: obj.continent.join(' '),
+      continent_id: obj.continent.join('-')
     };
   });
-  console.timeEnd("getCitiesByContinent")
+  // console.timeEnd("getCitiesByContinent")
   res.status(200).json(capitalizedData);
 });
 

@@ -1,0 +1,81 @@
+<div class="flex-container">
+    <div class="flex-empty"></div>
+    <div class="flex-content">
+        <h1>{{ continent }}</h1>
+        <div class="continent-activities">
+            <div class="search-nav">
+                <form action="#">
+                    <div class="search-box bg-transparent">
+                        <div id="search-area" class="search-field">
+                            <div class="input-group">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-search" viewBox="0 0 16 16">
+                                        <path
+                                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z">
+                                        </path>
+                                    </svg>
+                                </span>
+                                <input type="text" class="form-control" placeholder="Search" value="{{ continent }}" />
+                                {{!-- <input type="text" class="form-control" placeholder="Search"
+                                    aria-label="Input group example" aria-describedby="basic-addon1"
+                                    fdprocessedid="df5ux6" value="{{ continent }}" /> --}}
+                            </div>
+                        </div>
+
+                        <div id="date-picker" class="search-field">
+                            <div class="input-group">
+                                {{!-- <div class="input-group date" id="datepicker">
+                                    <input type="text" class="form-control" id="date" />
+                                    <span class="input-group-append">
+                                        <span class="input-group-text bg-light d-block">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </span>
+                                </div> --}}
+                                <span class="input-group-append">
+                                    <span class="input-group-text h-100 v-100" id="date-icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
+                                            <path
+                                                d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z">
+                                            </path>
+                                        </svg>
+                                    </span>
+                                </span>
+
+                                <input type="date" class="form-control input-group-append" id="date" />
+                            </div>
+                        </div>
+                        <div id="summit" class="search-field">
+                            <input class="btn btn-primary h-100 w-100" type="submit" value="Submit">
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <div class="location-nav">
+                <div class="card acttraction-card">
+                    <div class="row g-0">
+                        <div class="col-3 g-0 attraction-img-cell">
+                            <img src="..\img\placeholder.png" class="card-img img-fluid h-100" alt="...">
+                        </div>
+                        <div class="col-9 g-0 attraction-info-cell">
+                            <div class="card-body">
+                                <h5 class="card-title">Card title</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="flex-empty"></div>
+</div>
+
+<script>
+    $(function () {
+        $('#date').datepicker();
+    });
+</script>
