@@ -544,7 +544,7 @@
 							"urlencoded": [
 								{
 									"key": "activities_id",
-									"value": "a1",
+									"value": "6489e6710e06f9c68a03fa0c",
 									"type": "text"
 								},
 								{
@@ -564,7 +564,7 @@
 								},
 								{
 									"key": "rating",
-									"value": "4",
+									"value": "5",
 									"type": "text"
 								}
 							]
@@ -592,7 +592,7 @@
 							"mode": "urlencoded",
 							"urlencoded": []
 						},
-						"url": "http://localhost:8002/api/comment/activity/a1"
+						"url": "http://localhost:8002/api/comment/activity/6489e6710e06f9c68a03fa0c"
 					},
 					"response": []
 				}
