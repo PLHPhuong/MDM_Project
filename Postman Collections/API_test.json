@@ -544,7 +544,7 @@
 							"urlencoded": [
 								{
 									"key": "activities_id",
-									"value": "6489e6710e06f9c68a03fa0c",
+									"value": "a1",
 									"type": "text"
 								},
 								{
@@ -564,7 +564,7 @@
 								},
 								{
 									"key": "rating",
-									"value": "5",
+									"value": "4",
 									"type": "text"
 								}
 							]
