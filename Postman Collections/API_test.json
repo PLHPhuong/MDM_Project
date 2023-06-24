@@ -53,7 +53,7 @@
 								}
 							]
 						},
-						"url": "http://localhost:8000/api/activities/city"
+						"url": "http://localhost:8000/api/activities/continent/city"
 					},
 					"response": []
 				},
