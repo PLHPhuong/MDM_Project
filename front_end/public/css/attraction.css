@@ -1,0 +1,115 @@
+:root {
+    --search-area-background: #eee8e8c9;
+    --card-default-width: 225px;
+    --card-default-height: 125px;
+    /* --card-img-default-width: calc(var(--card-default-width) -5px);
+    --card-img-default-height: calc(var(--card-default-height)-5px);
+ */
+}
+
+.search-box {
+    background-color: var(--search-area-background);
+}
+
+#search.flex-container {
+    background-color: var(--search-area-background);
+}
+
+.nearby-box {}
+
+.continent-box {}
+.attraction-seesion{
+    padding: 10px;
+}
+.flex-content.location-box {
+    margin-right: 10px;
+}
+
+.card-container {
+    margin: 0;
+    padding: 0;
+    aspect-ratio: 2;
+}
+
+.location-box {
+    display: grid;
+    grid-gap: 10px;
+    margin: 25px;
+    grid-template-columns: repeat(auto-fit, minmax(225px, 280px));
+    grid-template-rows: auto;
+}
+
+/* ==================== Filetered Page ==================== */
+
+#search-nav {}
+
+
+
+.continent-activities {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-gap: 5px;
+}
+
+#location-nav {
+
+}
+
+.acttraction-card {
+    max-height: 300px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    min-width: 800px;
+   
+
+}.card.acttraction-card{
+    max-height: 300 ;
+}
+.row.g-0{
+    max-height: 300 ;
+}
+.card.acttraction-card .card-body{
+    padding: 20px;
+}
+.attraction-img-cell {
+    max-width: 230px;
+    max-height: 300px;
+}
+
+.attraction-info-cell {
+    margin-right: 5px;
+}
+.attraction-info{
+    margin:0
+}
+.search-box {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 1fr;
+    gap: 0;
+}
+
+.transparent-form {
+    background-color: transparent;
+    border: none;
+}
+
+.search-field {
+    margin-right: 10px;
+}
+
+.input-group-append {
+    cursor: pointer;
+}
+
+.search-area {}
+
+@media (max-width: 1200px) {
+    .continent-activities {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        /* Optional: Adds gap between grid items */
+    }
+}

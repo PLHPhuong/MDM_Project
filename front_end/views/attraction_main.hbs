@@ -1,5 +1,70 @@
+<div id="search" class="flex-container attraction-seesion">
+    <div class="flex-empty"></div>
+    <div class="flex-content search-box">
+        <h1>What do you want to see and do?</h1>
+        <h4>Discover new attractions and experiences to match your interests and travel style</h4>
+
+        {{> _search }}
+    </div>
+    <div class="flex-empty"></div>
+</div>
+
+<div id="nearby" class="flex-container attraction-seesion">
+    <div class="flex-empty"></div>
+    <div class="flex-content">
+    </div>
+    <div class="flex-empty"></div>
+</div>
+
+<div id="continent" class="flex-container attraction-seesion">
+    <div class="flex-empty"></div>
+    <div class="flex-content">
+
+        <p><b>Explore more destinations</b> <br> Find things to do in cities around the world</p>
+        <ul class="nav nav-tabs" id="location-continents" role="tablist">
+            {{#each data}}
+            <li class="nav-item" role="presentation">
+                <button class="nav-link " id="{{ continent_id }}-tab" data-bs-toggle="tab"
+                    data-bs-target="#{{ continent_id }}" type="button" role="tab" aria-controls="{{ continent_id }}"
+                    aria-selected="false">{{ continent }}</button>
+            </li>
+            {{/each}}
+        </ul>
+        <div class="tab-content" id="myLocationContinentsContent">
+
+            {{#each data}}
+            <div class="tab-pane fade " id="{{ continent_id }}" role="tabpanel"
+                aria-labelledby="{{ continent_id }}-tab">
+                <div class="location-box">
+                    {{#each cities}}
+                    <a href="/attraction/{{this}}" styles="">
+                        <div class="card-container">
+                            <div class="card bg-dark text-white h-100 w-100">
+                                <img src="img\placeholder.png" class="card-img card-img-size h-100 w-100" alt="...">
+                                <div class="card-img-overlay card-img-size">
+                                    <h5 class="card-title">{{this}}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {{/each}}
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    <div class="flex-empty"></div>
+</div>
+
+
+
 <script>
     $(document).ready(function () {
         $("#attraction").addClass("selected-route");
+        $("#location-continents li:first-child button").addClass("active");
+        $("#myLocationContinentsContent .tab-pane.fade:first-child").addClass("active show");
+        //temp = $("#location-continents :first-child")
+        //console.log(temp)
+        // 
     });
 </script>

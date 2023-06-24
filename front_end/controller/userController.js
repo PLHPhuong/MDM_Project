@@ -22,6 +22,8 @@ const postLogin = (req, res, next) => {
         return;
       }
 
+      if (data.avatar.includes("/img/"))
+        data.avatar = "http://localhost:8001" + data.avatar;
       req.session.user = data;
       res.redirect("/");
     })

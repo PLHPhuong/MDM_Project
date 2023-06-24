@@ -1,0 +1,107 @@
+<div class="flex-container" style="margin-top: 10px;">
+    <div class="flex-empty"></div>
+    <div class="flex-content">
+        {{#if city}}
+        <h1 id="search-key">{{ city }}</h1>
+        {{/if}}
+        {{#if search}}
+        <h1 id="search-key">Search key: {{ search }}</h1>
+        {{/if}}
+        <div class="continent-activities">
+            {{> _search }}
+
+            <div class="location-nav">
+                {{#each data}}
+                <a href="" style="text-decoration: none;">
+                    <div class="card acttraction-card">
+                        <div class="row g-0">
+                            <div class="col-3 g-0 attraction-img-cell">
+                                <img src="{{ image }}" class="card-img img-fluid h-100" alt="...">
+                            </div>
+                            <div class="col g-0 attraction-info-cell">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{short_description}}</h4>
+                                    <p class="attraction-info">{{short_description}}<br></p>
+                                    <ul style="list-style-type: none;padding-left:10px">
+                                        <li>Rating: {{rating}}</li>
+                                        {{#if free_cancellation_available}}
+                                        <li>free_cancellation_available</li>
+                                        {{/if}}
+                                        {{#if duration.average}}
+                                        <li class="duration">Duration: {{duration.average}}</li>
+                                        {{/if}}
+                                        {{#if average_cost}}
+                                        <li>Cost: {{average_cost}}</li>
+                                        {{/if}}
+                                    </ul>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                {{/each}}
+            </div>
+
+        </div>
+    </div>
+    <div class="flex-empty"></div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.duration').each(function () {
+            text = $(this).text().split(": ")[1]
+            var elementValue = parseInt(text);
+            hours = Math.floor(elementValue / 60)
+            minutes = elementValue % 60
+            newtext = hours == 0 ? `Duration: ${minutes} minutes` : `Duration: ${hours} hour ${minutes} minutes`
+            $(this).text(newtext)
+            // console.log(typeof elementValue)
+            // console.log(elementValue);
+        });
+    })
+</script>
+
+{{!--
+
+$(document).ready(function () {
+text = $('#search-key').text()
+searchkey = text.split(':')
+if (searchkey.length > 1) {
+result = [...searchkey[1]].slice(1).join("");
+$('#text-search-field').val(result)
+}
+else
+$('#text-search-field').val(text)
+})
+
+$(document).ready(function () {
+
+var typingTimer;
+var doneTypingInterval = 100;
+$('#text-search-field').keyup(function () {
+clearTimeout(typingTimer); // Clear the previous timer
+
+// Start a new timer after keyup event is triggered
+typingTimer = setTimeout(function () {
+// Code to execute when typing stops
+var inputValue = $('#text-search-field').val();
+$("#search-form").attr("action", "/attraction/" + inputValue);
+}, doneTypingInterval);
+});
+});
+
+$(document).ready(function () {
+// Get today's date
+var today = new Date();
+
+// Format the date to YYYY-MM-DD
+var formattedDate = today.toISOString().substr(0, 10);
+
+// Set the default value of the date input field
+$('#date-search-field').val(formattedDate);
+console.log($('#date-search-field').val())
+});
+--}}

@@ -35,6 +35,40 @@
 					"response": []
 				},
 				{
+					"name": "search activities",
+					"id": "78cea825-b49f-47d2-b7eb-e2bb702c76e1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "city",
+									"value": "New York",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "search-text",
+									"value": "Ha noi",
+									"type": "text"
+								},
+								{
+									"key": "selected-date",
+									"value": "2023-06-24",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/activities/search"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new Activities",
 					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
@@ -485,6 +519,84 @@
 				}
 			],
 			"id": "2383fae7-c28c-4928-acd1-fa83d413524e"
+		},
+		{
+			"name": "Comment API",
+			"item": [
+				{
+					"name": "Create a comment",
+					"id": "fae11c4e-cf23-4baa-aa1c-14e76fcc4088",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "activities_id",
+									"value": "6489e6710e06f9c68a03fa0c",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "u2",
+									"type": "text"
+								},
+								{
+									"key": "user_name",
+									"value": "uuuu",
+									"type": "text"
+								},
+								{
+									"key": "comment",
+									"value": "sdawqeaverfweqwe",
+									"type": "text"
+								},
+								{
+									"key": "rating",
+									"value": "3",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8002/api/comment"
+					},
+					"response": []
+				},
+				{
+					"name": "get comments by Activities Id",
+					"id": "603cfbbe-0b27-4ef5-9ac5-ae7c5016a7a4",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": "http://localhost:8002/api/comment/activity/6489e6710e06f9c68a03fa0c"
+					},
+					"response": []
+				}
+			],
+			"id": "29d119c4-0393-44f3-a883-079e374c478f"
 		}
 	]
 }
