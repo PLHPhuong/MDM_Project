@@ -35,6 +35,19 @@
 					"response": []
 				},
 				{
+					"name": "Get all cities by counrty in activities Copy",
+					"id": "78cea825-b49f-47d2-b7eb-e2bb702c76e1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:8000/api/activities/continent/city"
+					},
+					"response": []
+				},
+				{
 					"name": "Create an new Activities",
 					"id": "a3ab186d-4f37-47ed-a0f5-99cbca24b286",
 					"protocolProfileBehavior": {
