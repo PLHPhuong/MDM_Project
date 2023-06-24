@@ -55,8 +55,7 @@
 								{
 									"key": "search-text",
 									"value": "Ha noi",
-									"type": "text",
-									"disabled": true
+									"type": "text"
 								},
 								{
 									"key": "selected-date",
