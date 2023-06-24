@@ -43,7 +43,17 @@
 					"request": {
 						"method": "POST",
 						"header": [],
-						"url": "http://localhost:8000/api/activities/continent/city"
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "city",
+									"value": "London",
+									"type": "text"
+								}
+							]
+						},
+						"url": "http://localhost:8000/api/activities/city"
 					},
 					"response": []
 				},
