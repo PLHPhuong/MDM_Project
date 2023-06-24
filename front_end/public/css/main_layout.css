@@ -139,11 +139,6 @@ body #header-bar {
     border-color: transparent;
 }
 
-
-
-
-
-
 #intro-1 {
     --intro1-width: 1200px;
     --intro1-height: 340px;
@@ -191,4 +186,15 @@ body #header-bar {
     .greeting-child {
         font-size: 90px;
     }
+}
+
+
+.offcanvas {
+    width: 70% !important;
+}
+
+.line {
+    border: none;
+    border-top: 1px solid #b9b5b560;
+    margin: 10px 0;
 }

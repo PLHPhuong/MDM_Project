@@ -37,6 +37,8 @@ class commentModel {
       user_id TEXT,
       createdAt TIMESTAMP,
       user_name TEXT,
+      avatar TEXT,
+      rating INT,
       comment TEXT,
       PRIMARY KEY (activities_id, comment_id)
     )
@@ -52,13 +54,27 @@ class commentModel {
   }
 
   //   async createComment({ activitiesId, commentId, userId, createdAt, userName, comment })
-  async createComment({ activitiesId, userId, userName, comment }) {
+  async createComment({
+    activitiesId,
+    userId,
+    userName,
+    avatar,
+    rating,
+    comment,
+  }) {
     const insertQuery = `
-      INSERT INTO ${this.keyspace}.${this.table} (activities_id, comment_id, user_id, createdAt, user_name, comment)
-      VALUES (?, uuid(), ?, toTimestamp(now()), ?, ?)
+      INSERT INTO ${this.keyspace}.${this.table} (activities_id, comment_id, user_id, createdAt, user_name, avatar, rating, comment)
+      VALUES (?, uuid(), ?, toTimestamp(now()), ?, ?, ?, ?)
     `;
     // const insertParams = [activitiesId, commentId, userId, createdAt, userName, comment];
-    const insertParams = [activitiesId, userId, userName, comment];
+    const insertParams = [
+      activitiesId,
+      userId,
+      userName,
+      avatar,
+      rating,
+      comment,
+    ];
 
     try {
       const result = await this.client.execute(insertQuery, insertParams, {
@@ -70,18 +86,34 @@ class commentModel {
       throw error;
     }
   }
-  async getCommentsByActivites(activitiesId){
+  async getCommentsByActivites(activitiesId) {
     const selectQuery = `SELECT * FROM ${this.keyspace}.${this.table} WHERE activities_id = ?`;
-    const selectParams  = [activitiesId];
+    const selectParams = [activitiesId];
 
     try {
-        const result = await this.client.execute(selectQuery, selectParams, { prepare: true });
-        return result.rows;
-      } catch (error) {
-        console.error('Error creating comment:', error);
-        throw error;
-      }
+      const result = await this.client.execute(selectQuery, selectParams, {
+        prepare: true,
+      });
+      return result.rows;
+    } catch (error) {
+      console.error("Error creating comment:", error);
+      throw error;
+    }
+  }
+  async getAverageCommentsRatingByActivites(activitiesId) {
+    const selectQuery = `SELECT AVG(rating) AS average_rating, COUNT(rating) AS rating_count FROM ${this.keyspace}.${this.table} WHERE activities_id = ?`;
+    const selectParams = [activitiesId];
 
+    try {
+      const result = await this.client.execute(selectQuery, selectParams, {
+        prepare: true,
+      });
+      const row = result.first();
+      return {average: row["average_rating"], count: row["rating_count"].toNumber()};
+    } catch (error) {
+      console.error("Error creating comment:", error);
+      throw error;
+    }
   }
 }
 

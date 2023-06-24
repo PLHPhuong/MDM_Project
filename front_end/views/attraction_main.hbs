@@ -1,20 +1,22 @@
-<div id="search" class="flex-container">
+<div id="search" class="flex-container attraction-seesion">
     <div class="flex-empty"></div>
     <div class="flex-content search-box">
-        Hello1
+        <h1>What do you want to see and do?</h1>
+        <h4>Discover new attractions and experiences to match your interests and travel style</h4>
+
+        {{> _search }}
     </div>
     <div class="flex-empty"></div>
 </div>
 
-<div id="nearby" class="flex-container">
+<div id="nearby" class="flex-container attraction-seesion">
     <div class="flex-empty"></div>
     <div class="flex-content">
-        Hello2
     </div>
     <div class="flex-empty"></div>
 </div>
 
-<div id="continent" class="flex-container">
+<div id="continent" class="flex-container attraction-seesion">
     <div class="flex-empty"></div>
     <div class="flex-content">
 
@@ -35,7 +37,7 @@
                 aria-labelledby="{{ continent_id }}-tab">
                 <div class="location-box">
                     {{#each cities}}
-                    <a href="/attraction/{{this}}">
+                    <a href="/attraction/{{this}}" styles="">
                         <div class="card-container">
                             <div class="card bg-dark text-white h-100 w-100">
                                 <img src="img\placeholder.png" class="card-img card-img-size h-100 w-100" alt="...">

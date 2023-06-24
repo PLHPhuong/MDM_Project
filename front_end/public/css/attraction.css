@@ -18,7 +18,9 @@
 .nearby-box {}
 
 .continent-box {}
-
+.attraction-seesion{
+    padding: 10px;
+}
 .flex-content.location-box {
     margin-right: 10px;
 }
@@ -49,24 +51,37 @@
     grid-gap: 5px;
 }
 
-#location-nav {}
-
-.acttraction-card {
-    max-height: 200px;
-    margin-right: 15px;
-    min-width: 800px;
+#location-nav {
 
 }
 
+.acttraction-card {
+    max-height: 300px;
+    margin-right: 15px;
+    margin-bottom: 10px;
+    min-width: 800px;
+   
+
+}.card.acttraction-card{
+    max-height: 300 ;
+}
+.row.g-0{
+    max-height: 300 ;
+}
+.card.acttraction-card .card-body{
+    padding: 20px;
+}
 .attraction-img-cell {
-    max-width: 190px;
-    max-height: 190px;
+    max-width: 230px;
+    max-height: 300px;
 }
 
 .attraction-info-cell {
     margin-right: 5px;
 }
-
+.attraction-info{
+    margin:0
+}
 .search-box {
     display: grid;
     grid-template-rows: auto auto auto;
@@ -96,9 +111,5 @@
         grid-template-columns: 1fr;
         gap: 10px;
         /* Optional: Adds gap between grid items */
-    }
-
-    .acttraction-card {
-        min-width: 800px;
     }
 }
