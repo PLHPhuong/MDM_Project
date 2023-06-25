@@ -22,6 +22,19 @@
 					"response": []
 				},
 				{
+					"name": "Get all activities in database Copy",
+					"id": "1460ce58-10cc-4207-aea8-ea924a361156",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8000/api/activities"
+					},
+					"response": []
+				},
+				{
 					"name": "Get all cities by counrty in activities",
 					"id": "53e664d9-8418-492a-b55a-5608ce8688b3",
 					"protocolProfileBehavior": {
