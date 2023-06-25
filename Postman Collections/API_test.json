@@ -22,7 +22,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all activities in database Copy",
+					"name": "Get all activities belong a a user",
 					"id": "1460ce58-10cc-4207-aea8-ea924a361156",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
