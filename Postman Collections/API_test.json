@@ -30,7 +30,7 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"url": "http://localhost:8000/api/activities"
+						"url": "http://localhost:8000/api/activities/user/6489e66e0e06f9c68a03f9d0"
 					},
 					"response": []
 				},
