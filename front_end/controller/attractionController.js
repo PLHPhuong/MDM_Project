@@ -40,7 +40,27 @@ const LoadFilterAttractionPage = async (req, res, next) => {
     user: user,
   });
 };
+
+const AddCommentToAttraction = async (req, res, next) => {
+  let req_body = req.body;
+  const user = req.session.user;
+
+  req_body.rating = parseFloat(req_body.rating);
+
+  console.log(req_body);
+  const data = await Attraction.AddComment(req_body);
+  if (data.error){
+    console.log(error)
+  }
+  res.redirect(`/attraction/attractionDetail/${req.params.id}`);
+  // res.render("comment", {
+  //   layout: "main",
+  //   user: req.session.user,
+  // });
+};
+
 module.exports = {
   LoadMainPageAttraction,
   LoadFilterAttractionPage,
+  AddCommentToAttraction,
 };

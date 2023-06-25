@@ -14,7 +14,9 @@
         <label for="password">Password:</label>
         <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" />
       </div>
-
+      {{#if previous_page}}
+      <input type="hidden" name="previous_page" class="form-control" value="{{ previous_page }}">
+      {{/if }}
       <span id="message-login-false">{{error}}</span>
 
       <br />

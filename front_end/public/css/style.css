@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0px;
 }
 #header {
@@ -14,20 +14,16 @@
   list-style: none;
   padding: 0;
   margin-left: 10px;
-  /* max-width: 500;
-  min-height: 50; */
+
 }
 #header #title {
   color: white;
   font-size: 25px;
   margin-top: 0;
-  margin-right: auto; /* Aligns to the left */
-  margin-left: 10px; /* Adds some left margin for spacing */
+  margin-right: auto; 
+  margin-left: 10px; 
   display: flex;
   align-items: center;
-  /* min-width: 450px;
-  min-width: 500px;
-  max-height: 20px; */
 }
 #title a {
   color: #ffffff;
@@ -39,9 +35,6 @@
 #header-bar-2{
   margin-bottom: 0;
   display: flex;
-  /* min-width: 450px;
-  min-height: 15px;
-  min-width: 500px; */
 }
 #header-bar-2 li {
   margin-left: 10px;
@@ -124,4 +117,16 @@
 #img-product {
   width: 300px;
   height: 100%;
+} */
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+#duration-input-conatiner {
+  display: grid;
+}
+
+label[for="itinerary_stops[]description"] {
+  padding: 0 !important;
 }

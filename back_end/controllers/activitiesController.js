@@ -204,6 +204,20 @@ const updateRating = asyncHandler(async (req, res) => {
   }
   return res.status(200).json(result);
 });
+// @desc Get user's activites
+// @route Get /api/activities/user/:id/
+// @access Private
+const getUserActivities = asyncHandler(async (req, res) => {
+  let result
+  try {
+    result = await Activity.find({owner:req.params.id})
+  } catch (error) {
+    // throw new Error(error);
+    console.log(error)
+    return res.status(400).json({error:error});
+  }
+  return res.status(200).json(result);
+});
 
 module.exports = {
   getAllActivities,
@@ -211,4 +225,5 @@ module.exports = {
   getCitiesByContinent,
   searchActivies,
   updateRating,
+  getUserActivities,
 };

@@ -18,6 +18,8 @@
     <link href="/css/main_layout.css" rel="stylesheet" type="text/css" />
     <link href="/css/paging.css" rel="stylesheet" type="text/css" />
     <link href="/css/attraction.css" rel="stylesheet" type="text/css" />
+    <link href="/css/styles.css" rel="stylesheet" type="text/css" />
+
 
 
     <!-- Jquery -->
@@ -43,11 +45,11 @@
                             <button class="btn bg-transparent" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{user.name}}
-                                <img src= {{user.avatar}} alt="Avatar" class="avatar avatar-img">
+                                <img src={{user.avatar}} alt="Avatar" class="avatar avatar-img">
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Partner ship</a></li>
+                                <li><a class="dropdown-item" href="/attraction/test1">Partner ship</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
@@ -55,7 +57,13 @@
                             </ul>
                         </div>
                         {{else}}
-                        <a href="/login" class="btn btn-outline-light bg-transparent" id="login-buttom"> Login </a>
+                        <form id="login_req" method="GET" action="/login" onsubmit="LoggingIn(event)">
+                            <input type="hidden" id="previous_page" name="previous_page" value="#">
+                            <button type="submit" class="btn btn-outline-light bg-transparent"
+                                id="login-buttom">Login</button>
+                        </form>
+                        {{!-- <a href="/login" class="btn btn-outline-light bg-transparent" id="login-buttom"> Login
+                        </a> --}}
                         {{/if}}
                     </div>
 
@@ -75,45 +83,29 @@
             <div class="flex-empty"></div>
         </div>
     </div>
+
     <div class="item-2">
         {{#if isIndex}}
         {{> _greeting }}
         {{/if}}
 
-         {{{body}}}
+        {{{body}}}
         {{!-- <div class="flex-container">
             <div class="flex-empty"></div>
             <div class="flex-content">
-               {{{body}}}
+                {{{body}}}
             </div>
             <div class="flex-empty"></div>
         </div> --}}
     </div>
-    {{!--
-    <script>
-        $(document).ready(() => {
-            // render full size image
-            var imageUrl = $('#intro-1').css('background-image').replace('url("', '').replace('")', '');
-            var tempImg = new Image();
-            tempImg.src = imageUrl;
-            $('#intro-1').height(tempImg.height);
-        });
-    </script> --}}
-
-    {{!-- <div id="login">
-        {{#if user}}
-        <span>Xin chào {{user.name}} </span>
-        <p> | </p>
-        <a href="/user/logout">Đăng xuất</a>
-        {{else}}
-        <a href="/user/register">Đăng ký</a>
-        <p> | </p>
-        <a href="/user/login">Đăng nhập</a>
-        {{/if}}
-    </div> --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
         crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#previous_page').val(window.location.href)
+        })
+    </script>
 </body>
 
 </html>

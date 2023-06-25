@@ -11,60 +11,71 @@
           </tr>
         </thead>
         <tbody>
-        {{#each data.attractionList}}
+          {{#each data.attractionList}}
           <tr class="record">
             <td scope="row">{{ _id }}</td>
             <td scope="row">{{ name }}</td>
-            <td><button id="btn-update" data-id="{{ _id }}" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ _id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
-            </svg>&nbsp;Update</button>&nbsp;
-            <button  id="btn-delete" data-id="{{ _id }}" type="button" class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
-            </svg>&nbsp;Delete</button>
+            <td><button id="btn-update" data-id="{{ _id }}" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#exampleModal-{{ _id }}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                  <path
+                    d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                  <path fill-rule="evenodd"
+                    d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                </svg>&nbsp;Update</button>&nbsp;
+              <button id="btn-delete" data-id="{{ _id }}" type="button" class="btn btn-danger"><svg
+                  xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                  <path
+                    d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                </svg>&nbsp;Delete</button>
             </td>
           </tr>
-        {{/each}}
+          {{/each}}
         </tbody>
       </table>
 
-      <button id="btn-create" type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-          <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+      <button id="btn-create" type="button" class="btn btn-success" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle"
+          viewBox="0 0 16 16">
+          <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path
+            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
         </svg>&nbsp;Create</button>
-      
+
       <!-- Modal for creation -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="exampleModalLabel">CREATE an attraction</h1>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-              <form method="post" action="/attraction/submit">
+              <form method="post" action="/attraction/submit" id="submit-form">
                 {{!-- <input type="hidden" id="record-id" name="_id"> --}}
                 <table class="table table-light table-sm">
                   <tr>
                     <td><label for="name">Name:</label></td>
-                    <td><input type="text" id="name" name="name" required></td>
+                    <td><input type="text" id="name" name="name"></td> {{!-- required --}}
                   </tr>
                   <tr>
-                    <td><label for="short_description" required>Short description:</label></td>
-                    <td><textarea id="short_description" name="short_description"></textarea></td>
+                    <td><label for="short_description">Short description:</label></td>
+                    <td><textarea id="short_description" name="short_description"></textarea></td> {{!-- required --}}
                   </tr>
                   {{!-- <tr>
-                    <td><label for="image" >Image link:</label></td>
+                    <td><label for="image">Image link:</label></td>
                     <td><input type="text" id="image" name="image"></td>
                   <tr> --}}
-                    <td><label for="min_duration" required>Minimum duration:</label></td>
-                    <td><input type="number" id="min_duration" name="min_duration"></td>
+                    <td><label for="min_duration">Minimum duration:</label></td>
+                    <td><input type="number" id="min_duration" name="min_duration"></td> {{!-- required --}}
                   </tr>
                   <tr>
-                    <td><label for="max_duration" required>Maximum duration:</label></td>
-                    <td><input type="number" id="max_duration" name="max_duration"></td>
+                    <td><label for="max_duration">Maximum duration:</label></td>
+                    <td><input type="number" id="max_duration" name="max_duration"></td> {{!-- required --}}
                   </tr>
 
                   <tr>
@@ -72,45 +83,50 @@
                     <td>
                       <div class="input-group">
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="true" name="free_cancellation_available" value="true">
-                            &nbsp;<label for="true">True</label>
+                          <input class="form-check-input mt-0" type="radio" id="true" name="free_cancellation_available"
+                            value="true">
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="false" name="free_cancellation_available" value="false">
-                            &nbsp;<label for="false">False</label>
+                          <input class="form-check-input mt-0" type="radio" id="false"
+                            name="free_cancellation_available" value="false">
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><label for="city" required>City:</label></td>
-                    <td><input type="text" id="city" name="city"></textarea></td>
+                    <td><label for="city">City:</label></td>
+                    <td><input type="text" id="city" name="city"></textarea></td> {{!-- required --}}
                   </tr>
                   <tr>
                     <td><label for="country">Country:</label></td>
                     <td><input type="text" id="country" name="country"></textarea></td>
                   </tr>
                   <tr>
-                    <td><label for="continent" required>Continent:</label></td>
-                    <td><input type="text" id="continent" name="continent"></td>
+                    <td><label for="continent">Continent:</label></td>
+                    <td><input type="text" id="continent" name="continent"></td> {{!-- required --}}
                   </tr>
                   {{!-- <tr>
                     <td><label for="average-cost">Average cost:</label></td>
                     <td><input type="number" id="average_cost"></td>
                   </tr> --}}
-                  
-                  <input type="hidden" id="owner" name="owner"></input> {{!-- USER FROM SESSION ================================================================================================================                  --}}
+
+                  <input type="hidden" id="owner" name="owner" value="{{ user._id }}"></input> {{!-- USER FROM SESSION
+                  ===========================================================================--}}
                   <tr>
                     <td><label for="pick_up_included">Pick up included:</label></td>
                     <td>
                       <div class="input-group">
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="true" name="pick_up_included" value="true">
-                            &nbsp;<label for="true">True</label>
+                          <input class="form-check-input mt-0" type="radio" id="true" name="pick_up_included"
+                            value="true">
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="false" name="pick_up_included" value="false">
-                            &nbsp;<label for="false">False</label>
+                          <input class="form-check-input mt-0" type="radio" id="false" name="pick_up_included"
+                            value="false">
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
@@ -121,39 +137,210 @@
                       <div class="input-group">
                         <div class="input-group-text">
                           <input class="form-check-input mt-0" type="radio" id="true" name="refundable" value="true">
-                            &nbsp;<label for="true">True</label>
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
                           <input class="form-check-input mt-0" type="radio" id="false" name="refundable" value="false">
-                            &nbsp;<label for="false">False</label>
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
                   </tr>
                   <tr>
-                    <td><label for="description" required>Description:</label></td>
-                    <td><textarea id="description" name="description"></textarea></td>
+                    <td><label for="description">Description:</label></td>
+                    <td><textarea id="description" name="description"></textarea></td> {{!-- required --}}
+                  </tr>
+                  <tr>
+                    <td><label for="included">Include:</label></td>
+                    <td>
+                      <div id="included-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="included" name="included[]" class="w-100" style="max-width: 400px;">
+                      </div>
+                      <button id="add-included-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="not_included">Not included:</label></td>
+                    <td>
+                      <div id="not_included-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="not_included" name="not_included[]" class="w-100"
+                          style="max-width: 400px;">
+                      </div>
+                      <button id="add-not_included-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="accessibility">Accessibility:</label></td>
+                    <td>
+                      <div id="accessibility-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="accessibility" name="accessibility[]" class="w-100"
+                          style="max-width: 400px;">
+                      </div>
+                      <button id="add-accessibility-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="health_safety">Health safety:</label></td>
+                    <td>
+                      <div id="health_safety-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="health_safety" name="health_safety[]" class="w-100"
+                          style="max-width: 400px;">
+                      </div>
+                      <button id="add-health_safety-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="whyvisit">Why visit:</label></td>
+                    <td>
+                      <div id="whyvisit-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="whyvisit" name="whyvisit[]" class="w-100" style="max-width: 400px;">
+                      </div>
+                      <button id="add-whyvisit-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="restriction"> Restriction:</label></td>
+                    <td>
+                      <div id="restriction-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="restriction" name="restriction[]" class="w-100"
+                          style="max-width: 400px;">
+                      </div>
+                      <button id="add-restriction-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><label for="languages">Languages:</label></td>
+                    <td>
+                      <div id="languages-input-container" style="max-width: 400px; margin:0">
+                        <input type="text" id="languages" name="languages[]" class="w-100" style="max-width: 400px;">
+                      </div>
+                      <button id="add-languages-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-string-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
                   </tr>
                   <tr>
                     <td><label for="additional_information">Additional information:</label></td>
                     <td><textarea id="additional_information" name="additional_information"></textarea></td>
                   </tr>
                   <tr>
-                    <td><label for="location_departure" required>Location departure:</label></td>
-                    <td><textarea id="location_departure" name="location_departure"></textarea></td>
+                    <td><label for="location_departure">Location departure:</label></td>
+                    <td><textarea id="location_departure" name="location_departure"></textarea></td> {{!-- required --}}
                   </tr>
                   <tr>
                     <td><label for="location_end">Location end:</label></td>
                     <td><textarea id="location_end" name="location_end"></textarea></td>
                   </tr>
+
+                  <tr>
+                    <td><label for="itinerary_stops"> Itinerary stops:</label></td>
+                    <td>
+                      <div id="itinerary_stops-input-container" style="max-width: 400px; margin:0">
+                        <div class="w-100 an-instance">
+                          <div class="row w-100" id="stop-name">
+                            <label for="itinerary_stops[name][]" class="">Name:</label>
+                            <input type="text" id="itinerary_stops[name][]" name="itinerary_stops[name][]"
+                              class="form-control w-100 ms-2">
+                          </div>
+                          <div class="row w-100" id="stop-description">
+                            <label for="itinerary_stops[description][]" class="">Description:</label>
+                            <textarea type="text" id="itinerary_stops[description][]"
+                              name="itinerary_stops[description][]" class="form-control w-100 ms-2"></textarea>
+                          </div>
+                          <div class="row mt-1 g-1">
+                            <div id="duration" class="col">
+                              <div class="row align-items-center">
+                                <div class="col-auto">
+                                  <label for="itinerary_stops[duration][]">Duration:</label>
+                                </div>
+                                <div class="col">
+                                  <input type="text" id="itinerary_stops[duration][]" name="itinerary_stops[duration][]"
+                                    class="form-control" style='max-width:80px'>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="admission_ticket" class="col  d-flex align-items-center justify-content-end">
+                              <div>
+                                <label for="itinerary_stops[admission_ticket][]" class="p-0">Admission ticket:</label>
+                                <input type="checkbox" data-toggle="switch" name="itinerary_stops[admission_ticket][]"
+                                  id="itinerary_stops[admission_ticket][]" value="false" class="hpcheckbox" />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <button id="add-itinerary_stops-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-object-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td><label for="available"> Available:</label></td>
+                    <td>
+                      <div id="available-input-container" style="max-width: 400px; margin:0">
+                        <div style="display: grid; grid-template-columns: auto auto;" class="w-100 an-instance">
+                          <div id="start-container" style="text-align: left;">
+                            <label for="available[start][]">Start:</label>
+                            <input type="date" id="available[start][]" name="available[start][]"
+                              style="max-width: 400px;" class="form-control">
+                          </div>
+                          <div id="end-container" style="text-align: right;">
+                            <label for="available[end][]">End:</label>
+                            <input type="date" id="available[end][]" name="available[end][]" style="max-width: 400px;"
+                              class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <button id="add-available-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-object-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
+
+
+                  <tr>
+                    <td><label for="ticket"> Ticket:</label></td>
+                    <td>
+                      <div id="available-input-container" style="max-width: 400px; margin:0">
+                        <div style="display: grid; grid-template-columns: auto auto;" class="w-100 an-instance">
+                          <div id="start-container" style="text-align: left;">
+                            <label for="available[start][]">Start:</label>
+                            <input type="date" id="available[start][]" name="available[start][]"
+                              style="max-width: 400px;" class="form-control">
+                          </div>
+                          <div id="end-container" style="text-align: right;">
+                            <label for="available[end][]">End:</label>
+                            <input type="date" id="available[end][]" name="available[end][]" style="max-width: 400px;"
+                              class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <button id="add-available-input" type="button"
+                        class="btn btn-outline-secondary w-100 btn-sm mt-1 add-input-object-btn"
+                        style="max-width: 400px;">+</button>
+                    </td>
+                  </tr>
                 </table>
-                {{!-- included, not-included, accessibility, health_safety, whyvisit, restriction, languages --}}
-                {{!-- itinerary-stops --}}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add attraction</button>
-              </div>
+                {{!-- includedX, not-includedX, accessibilityX, health_safetyX, whyvisitX, restrictionX, languagesX --}}
+                {{!-- itinerary-stopsX --}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-success">Add attraction</button>
+            </div>
             </form>
           </div>
         </div>
@@ -162,7 +349,8 @@
 
       <!-- Modal for updation-->
       {{#each data.attractionList}}
-      <div class="modal fade" id="exampleModal-{{ _id }}" data-id="{{ _id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal-{{ _id }}" data-id="{{ _id }}" tabindex="-1"
+        aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
@@ -171,7 +359,7 @@
             </div>
             <div class="modal-body">
               <div>{{ _id }}</div>
-              <form method="post" action = "/attraction/submit/{{ _id }}">
+              <form method="post" action="/attraction/submit/{{ _id }}">
                 <input type="hidden" id="record-id" name="_id" value="{{ _id }}">
                 <table class="table table-light table-sm">
                   <tr>
@@ -195,12 +383,14 @@
                     <td>
                       <div class="input-group">
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="true" name="free-cancellation-available" value="true">
-                            &nbsp;<label for="true">True</label>
+                          <input class="form-check-input mt-0" type="radio" id="true" name="free-cancellation-available"
+                            value="true">
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="false" name="free-cancellation-available" value="false">
-                            &nbsp;<label for="false">False</label>
+                          <input class="form-check-input mt-0" type="radio" id="false"
+                            name="free-cancellation-available" value="false">
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
@@ -226,12 +416,14 @@
                     <td>
                       <div class="input-group">
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="true" name="pick-up-included" value="true">
-                            &nbsp;<label for="true">True</label>
+                          <input class="form-check-input mt-0" type="radio" id="true" name="pick-up-included"
+                            value="true">
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
-                          <input class="form-check-input mt-0" type="radio" id="false" name="pick-up-included" value="false">
-                            &nbsp;<label for="false">False</label>
+                          <input class="form-check-input mt-0" type="radio" id="false" name="pick-up-included"
+                            value="false">
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
@@ -242,11 +434,11 @@
                       <div class="input-group">
                         <div class="input-group-text">
                           <input class="form-check-input mt-0" type="radio" id="true" name="refundable" value="true">
-                            &nbsp;<label for="true">True</label>
+                          &nbsp;<label for="true">True</label>
                         </div>
                         <div class="input-group-text">
                           <input class="form-check-input mt-0" type="radio" id="false" name="refundable" value="false">
-                            &nbsp;<label for="false">False</label>
+                          &nbsp;<label for="false">False</label>
                         </div>
                       </div>
                     </td>
@@ -266,11 +458,11 @@
                 </table>
                 {{!-- included, not-included, accessibility, health_safety, whyvisit, restriction, languages --}}
                 {{!-- itinerary-stops --}}
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
-              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Save changes</button>
+            </div>
             </form>
           </div>
         </div>
@@ -279,60 +471,178 @@
 
       {{!-- <div id="modal-update" class="modal" style="width: 800px;">
         <div class="modal-content" aria-hidden="true">
+          <span class="close">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle"
+              viewBox="0 0 16 16">
+              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+              <path
+                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z" />
+            </svg>
+          </span>
+          <h2>Update Record</h2>
+          <div>
             <span class="close">
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-x-circle" viewBox="0 0 16 16">
-                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-              </svg>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </span>
-            <h2>Update Record</h2>
-                <div>
-                    <span class="close">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    </span>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
-                </div>
+            <button type="submit" class="btn btn-primary">Save changes</button>
+          </div>
         </div>
       </div> --}}
 
-      
+
       {{!-- {{#if updateSuccessful}}
       <div type="hiden" id="update-result">{{updateSuccessful}}</div>
       {{/if}} --}}
       <script>
-          /*$(document).ready(function() {
-            var temp = $('#update-result').text();
-            if (temp == "true"){
-              alert('Update successful!');
-            }
-            else alert('Failed@');
-          });*/
-        $(document).ready(function() {
-            $('.record #btn-update').click(function() {
-                var attractionId = $(this).data('id');
-                // Update some info
-                $('#record-id').val(attractionId);
-                $('#modal-update').show();
-                // ----------
-                //alert('Update button clicked for record:\n' + attractionId);
-            });
+        /*$(document).ready(function() {
+          var temp = $('#update-result').text();
+          if (temp == "true"){
+            alert('Update successful!');
+          }
+          else alert('Failed@');
+        });*/
+        $(document).ready(function () {
+          $('.record #btn-update').click(function () {
+            var attractionId = $(this).data('id');
+            // Update some info
+            $('#record-id').val(attractionId);
+            $('#modal-update').show();
+            // ----------
+            //alert('Update button clicked for record:\n' + attractionId);
+          });
 
-            $('.modal .close').click(function() {
-                $('.modal').hide();
-            });
-            
+          $('.modal .close').click(function () {
+            $('.modal').hide();
+          });
+
         });
 
-        $(document).ready(function() {
-            $('.record #btn-delete').click(function() {
-                var attractionId = $(this).data('id');
-                // Delete some info
-                
-                // ----------
-                alert('Delete button clicked for record:\n' + attractionId);
+        $(document).ready(function () {
+          $('.record #btn-delete').click(function () {
+            var attractionId = $(this).data('id');
+            // Delete some info
+
+            // ----------
+            alert('Delete button clicked for record:\n' + attractionId);
+          });
+        });
+
+        $(document).ready(function () {
+          const insert_input = {
+            available: `<div style="display: grid; grid-template-columns: auto auto;" class="w-100 an-instance">
+                          <div id="start-container" style="text-align: left;">
+                            <label for="available[start][]">Start:</label>
+                            <input type="date" id="available[start][]" name="available[start][]"
+                              style="max-width: 400px;" class="form-control">
+                          </div>
+                          <div id="end-container" style="text-align: right;">
+                            <label for="available[end][]">End:</label>
+                            <input type="date" id="available[end][]" name="available[end][]" style="max-width: 400px;"
+                              class="form-control">
+                          </div>
+                        </div>`,
+            itinerary_stops: `<div class="w-100 an-instance">
+                          <div class="row w-100" id="stop-name">
+                            <label for="itinerary_stops[name][]" class="">Name:</label>
+                            <input type="text" id="itinerary_stops[name][]" name="itinerary_stops[name][]"
+                              class="form-control w-100 ms-2">
+                          </div>
+                          <div class="row w-100" id="stop-description">
+                            <label for="itinerary_stops[description][]" class="">Description:</label>
+                            <textarea type="text" id="itinerary_stops[description][]" name="itinerary_stops[description][]"
+                              class="form-control w-100 ms-2"></textarea>
+                          </div>
+                          <div class="row mt-1 g-1">
+                            <div id="duration" class="col">
+                              <div class="row align-items-center">
+                                <div class="col-auto">
+                                  <label for="itinerary_stops[duration][]">Duration:</label>
+                                </div>
+                                <div class="col">
+                                  <input type="text" id="itinerary_stops[duration][]" name="itinerary_stops[duration][]"
+                                    class="form-control" style='max-width:80px'>
+                                </div>
+                              </div>
+                            </div>
+                            <div id="admission_ticket" class="col  d-flex align-items-center justify-content-end">
+                              <div>
+                                <label for="itinerary_stops[admission_ticket][]" class="p-0">Admission ticket:</label>
+                                <input type="checkbox" data-toggle="switch" name="itinerary_stops[admission_ticket][]"
+                                  id="itinerary_stops[admission_ticket][]" value="false" class="hpcheckbox" />
+                                  <input type="hidden" name="itinerary_stops[admission_ticket][]" value="false">
+                              </div>
+                            </div>
+                          </div>
+                        </div>`,
+          }
+
+
+          $('.add-input-string-btn').on('click', function () {
+            var field = $(this).attr('id').split('-')[1]
+            var container = `#${field}-input-container`
+            var Input = `<input type="text" id="${field}" name="${field}" class="w-100 mt-1" style="max-width: 400px;">`
+            $(container).append(Input);
+          });
+
+          $('.add-input-object-btn').on('click', function () {
+
+            var field = $(this).attr('id').split('-')[1]
+
+            var container = `#${field}-input-container`
+            var Input = insert_input[field]
+            if ($(container + ' .an-instance').length > 0)
+              Input = '<div class="line"></div> ' + Input
+            console.log(field)
+
+
+            $(container).append(Input);
+          });
+        })
+
+        $(document).ready(function () {
+          $('.hpcheckbox').each(function () {
+            var checkbox = $(this);
+            var hiddenInput = $('<input>').attr({
+              type: 'hidden',
+              name: checkbox.attr('name'),
+              value: 'false'
             });
+
+            checkbox.after(hiddenInput);
+          });
+          $(document).on('click', '.hpcheckbox', function () {
+            var checkbox = $(this);
+            var hiddenInput = $('<input>').attr({
+              type: 'hidden',
+              name: checkbox.attr('name'),
+              value: 'false'
+            });
+
+            if (checkbox.is(':checked')) {
+              hiddenInput.remove();
+            } else {
+              checkbox.after(hiddenInput);
+            }
+          });
+
+
         });
       </script>
     </div>
   </div>
 </div>
+
+{{!--
+$('#submit-form').submit(function () {
+// Find all checkboxes with class "hpcheckbox"
+$(this).find('.hpcheckbox').each(function () {
+$(this).find('input[type="hidden"]').prop('disabled', false);
+});
+});
+$(document).ready(function () {
+$('#add-include-input').on('click', function () {
+var Input = '<input type="text" id="include" name="include" class="w-100 mt-1" style="max-width: 400px;">';
+$('#include-input-container').append(Input);
+});
+})
+--}}

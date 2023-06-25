@@ -26,7 +26,24 @@ const SearchAttraction = async (data) => {
     .catch((error) => console.log(error));
   return result;
 };
+
+const AddComment = async (data) =>{
+  const result = await axios
+  .post("http://localhost:8002/api/comment", data)
+  .then((response) => response.data)
+  .catch((error) => console.log(error));
+return result;
+}
+const GetAttractionComments = async (id) =>{
+  const result = await axios
+  .get("http://localhost:8002/api/comment/activity/"+id)
+  .then((response) => response.data)
+  .catch((error) => console.log(error));
+return result;
+}
 module.exports = {
   LoadCitiesByContinent,
   SearchAttraction,
+  AddComment,
+  GetAttractionComments,
 };

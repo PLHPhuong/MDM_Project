@@ -26,8 +26,14 @@ app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", "./views");
 
-app.use(express.json());
-app.use(express.urlencoded({extended: false,}));
+// app.use(express.json());
+// app.use(express.urlencoded({extended: false,}));
+
+// Parse URL-encoded bodies
+app.use(express.urlencoded({ extended: true }));
+// Parse JSON bodies
+app.use(express.json({ strict: false }));
+
 app.use(cookieParser());
 
 app.use(session({

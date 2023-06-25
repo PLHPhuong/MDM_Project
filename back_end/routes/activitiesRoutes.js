@@ -8,4 +8,6 @@ router.get('/continent/city',activitiesController.getCitiesByContinent)
 router.post('/search',activitiesController.searchActivies)
 router.put('/:id/rating/:rating',activitiesController.updateRating)
 
+router.get('/user/:id',activitiesController.getUserActivities)
+
 module.exports = router

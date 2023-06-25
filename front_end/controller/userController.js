@@ -9,13 +9,18 @@ const sessionCheckerRedirecter = (req, res, next) => {
 };
 
 const login = (req, res, next) => {
+  previous_page = req.query.previous_page
   res.render("login", {
     layout: "login",
     error: req.params.error,
+    previous_page : previous_page,
   });
 };
 const postLogin = (req, res, next) => {
-  Promise.all([User.login(req.body)])
+  const req_body = req.body
+
+
+  Promise.all([User.login(req_body)])
     .then(([data]) => {
       if (data === undefined) {
         res.redirect(`/login?error=Invalid credential`);
@@ -25,6 +30,11 @@ const postLogin = (req, res, next) => {
       if (data.avatar.includes("/img/"))
         data.avatar = "http://localhost:8001" + data.avatar;
       req.session.user = data;
+      if (previous_page){
+        const oldPage = previous_page.split('http://localhost:8001').join("")
+        res.redirect(oldPage)
+        return
+      }
       res.redirect("/");
     })
     .catch(next);
