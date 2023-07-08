@@ -215,7 +215,8 @@ const fFilterActDetaiChanges = function (object) {
 };
 actDetailSchema.pre("save", async function (next) {
   // calculate average_cost
-  ticket_type = newInfo.ticket.ticket_type;
+  const newInfo = this;
+  const ticket_type = newInfo.ticket.ticket_type;
   let sumPrice = ticket_type.reduce(
     (acc, ticketType) => acc + ticketType.price,
     0

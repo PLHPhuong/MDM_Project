@@ -49,8 +49,8 @@ const AddCommentToAttraction = async (req, res, next) => {
 
   console.log(req_body);
   const data = await Attraction.AddComment(req_body);
-  if (data.error){
-    console.log(error)
+  if (data.hasOwnProperty(error)){
+    console.log(data.error)
   }
   res.redirect(`/attraction/attractionDetail/${req.params.id}`);
   // res.render("comment", {

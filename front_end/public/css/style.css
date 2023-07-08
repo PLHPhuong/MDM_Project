@@ -130,3 +130,27 @@
 label[for="itinerary_stops[]description"] {
   padding: 0 !important;
 }
+
+.col-sm-15 {
+  flex: 0 0 10%;
+  max-width: 10%;
+}
+
+.input-group.rounded-pill .form-control {
+  border-radius: 50px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.input-group.rounded-pill .input-group-text {
+  border-radius: 50px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.heading-front-format-1 {
+  color: white;
+  background-color: rgba(6, 35, 114, 0.993);
+}
+.heading-front-format-2 {
+  color: rgba(6, 35, 114, 0.993);
+}

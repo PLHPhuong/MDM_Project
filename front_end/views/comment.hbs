@@ -1,124 +1,1476 @@
-<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
-    aria-controls="offcanvasRight">Toggle right offcanvas</button>
+<!-- Button trigger modal -->
+<button id="create-attraction" type="button" class="btn btn-primary" data-bs-toggle="modal"
+    data-bs-target="#create-form">
+    Launch static backdrop modal
+</button>
 
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-    <div class="offcanvas-header" style="padding-bottom: 0;">
-        <h4 id="offcanvasRightLabel">Comments</h4>
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body" style="padding-top: 5;">
-        <div class="container">
-            <div class="row">
-                <div class="">
-
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-primary w-100" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop">
-                        Add a comment
-                    </button>
-
-
-                    <div class="line"></div>
-                    <div class="comment mt-4 text-justify float-left w-100"
-                        style=" border-top-width: inherit; border-top-styles:solid;">
-                        <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40"
-                            height="40">Jhon
-                        Doe</h4>
-                        <span>- 20 October, 2018</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam
-                            assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="line"></div>
-                    <div class="comment mt-4 text-justify float-left w-100">
-                        <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40"
-                            height="40">Jhon
-                        Doe</h4>
-                        <span>- 20 October, 2018</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam
-                            assumenda hic aliquam vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="line"></div>
-                    {{!-- <div class="text-justify darker mt-4 float-right">
-                        <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40"
-                            height="40">Jhon
-                        Doe</h4>
-                        <span>- 20 October, 2018</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic
-                            aliquam
-                            vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="comment mt-4 text-justify">
-                        <img src="https://i.imgur.com/yTFUilP.jpg" alt="" class="rounded-circle" width="40"
-                            height="40">Jhon
-                        Doe</h4>
-                        <span>- 20 October, 2018</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic
-                            aliquam
-                            vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div>
-                    <div class="darker mt-4 text-justify">
-                        <img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40"
-                            height="40">Jhon
-                        Doe</h4>
-                        <span>- 20 October, 2018</span>
-                        <br>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusamus numquam assumenda hic
-                            aliquam
-                            vero sequi velit molestias doloremque molestiae dicta?</p>
-                    </div> --}}
-
+<div class="modal fade" id="create-form" data-bs-keyboard="false" tabindex="-1" aria-labelledby="create-attraction"
+    aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered ">
+        <div class="modal-content modal-dialog-scrollable">
+            <form method="post" action="/attraction/submit" id="submit-create-form">
+                <div class="modal-header heading-front-format-1">
+                    <h3 class="modal-title" id="staticBackdropLabel">Create an attraction</h3>
+                    <button type="button" class="btn-close close-modal" data-bs-dismiss="modal" aria-label="Close"
+                        style="color: white !important;"></button>
                 </div>
-            </div>
+                <div class="modal-body">
+                    <!-- Hidden input owner-->
+                    <input type="hidden" id="owner" name="owner" value="{{ user._id }}"></input>
+                    <!-- General information card-->
+                    <div id="general-information-card" class="create-data-session">
+                        <div class="card" style="border:none;">
+                            <dir class="card-header p-0 ps-0 heading-front-format-2"
+                                style="background-color: transparent;">
+                                <h5> General information:</h5>
+                            </dir>
+                            <div class="card-body pt-2">
+                                <div class="form-group row w-100 ms-0">
+
+                                    <label id="name-label" for="name"
+                                        class="col-sm-2 ps-0 d-flex align-items-center pb-1 ">Name:</label>
+                                    <input type="text" id="name" name="name" class="col w-100 form-control"> {{!--
+                                    required--}}
+                                </div>
+                                <div id="short_description-field w-100" class="form-group pt-2">
+                                    <label for="short_description" class="pb-1">Short description:</label>
+                                    <textarea id="short_description" name="short_description"
+                                        class="w-100 form-control"></textarea>
+                                    {{!-- required--}}
+                                </div>
+                                <div id="description-field w-100" class=" form-group pt-2">
+                                    <label for="description" class="pb-1">Description:</label>
+                                    <textarea id="description" name="description" class="w-100 form-control"
+                                        rows="6"></textarea> {{!--
+                                    required--}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Duration card-->
+                    <div id="duration-card" class="create-data-session">
+                        <div class="card" style="border:none;">
+                            <div class="card-header ps-0 heading-front-format-2" style="background-color: transparent;">
+                                <h5>Duration:</h5>
+                            </div>
+                            <div class="card-body pt-2">
+                                <div class="row">
+                                    <div class="col col-lg-6 p-2 ">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <div class="col-md-auto">
+                                                    <div class="w-100 h-100 d-flex align-items-center">
+                                                        <label class="p-0" for="min_duration">Minimum:</label>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col">
+                                                    {{!-- <input class="w-100 p-0 duration-input" type="number"
+                                                        id="min_duration" name="min_duration"> --}}
+                                                    {{!--required | greater that 0--}}
+                                                    <div class="input-duration-container input-group form-control p-0 border-0"
+                                                        style="min-width: 300px;">
+                                                        <div
+                                                            class="form-control p-1 ps-2 pe-2 d-flex flex-row justify-content-end ">
+                                                            <input
+                                                                class="input-duration-component input-duration-day p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> day </span>
+                                                            <span class="p-0 flex-fill ps-1 pe-1"> - </span>
+                                                            <input
+                                                                class="input-duration-component input-duration-hour p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> hour </span>
+                                                            <span class="p-0 flex-fill ps-1 pe-1"> - </span>
+                                                            <input
+                                                                class="input-duration-component input-duration-min p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> min </span>
+                                                            <input class="input-duration" type="hidden"
+                                                                id="min_duration" name="min_duration" value="0">
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col col-lg-6 p-2">
+                                        <div class="form-group ">
+                                            <div class="row">
+                                                <div class="col-md-auto">
+                                                    <div class="d-flex w-100 h-100 align-items-center">
+                                                        <label class="d-flex p-0" for="max_duration">Maximum:</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col">
+                                                    {{!-- <input class="w-100 p-0 duration-input" type="number"
+                                                        id="max_duration" name="max_duration"> --}}
+                                                    {{!--required | greater that min_duration--}}
+                                                    <div class="input-duration-container input-group form-control p-0 border-0"
+                                                        style="min-width: 300px;">
+                                                        <div
+                                                            class="form-control p-1 ps-2 pe-2 d-flex flex-row justify-content-end ">
+                                                            <input
+                                                                class="input-duration-component input-duration-day p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> day </span>
+                                                            <span class="p-0 flex-fill ps-1 pe-1"> - </span>
+                                                            <input
+                                                                class="input-duration-component input-duration-hour p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> hour </span>
+                                                            <span class="p-0 flex-fill ps-1 pe-1"> - </span>
+                                                            <input
+                                                                class="input-duration-component input-duration-min p-0 border-0 flex-fill"
+                                                                type="number" min="0" max="999" maxlength="2" value="00"
+                                                                style="width: 2.5em; text-align: center;"
+                                                                oninput="formatNumberInput(this)">
+                                                            <span class="p-0 flex-fill"> min </span>
+                                                            <input class="input-duration" type="hidden"
+                                                                id="max_duration" name="max_duration" value="0">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Location card-->
+                    <div id="location-card" class="create-data-session">
+                        <div class="card" style="border:none;">
+                            <div class="card-header heading-front-format-2 ps-0" style="background-color: transparent;">
+                                <h5>Location:</h5>
+                            </div>
+                            <div class="card-body pt-2">
+                                <!-- Location info-1-->
+                                <div class="row">
+                                    <div class="col-md-4 pb-1">
+                                        <div class="row">
+                                            <div class="col-lg-4 d-flex align-items-center">
+                                                <label for="continent" class="pt-1 pb-1">Continent:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input type="text" id="continent" class="w-100 form-control" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pb-1">
+                                        <div class="row">
+                                            <div class="col-lg-4 d-flex align-items-center">
+                                                <label for="country" class="pt-1 pb-1">Country:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input type="text" id="country" class="w-100 form-control" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 pb-1">
+                                        <div class="row">
+                                            <div class="col-lg-4 d-flex align-items-center">
+                                                <label for="city" class="pt-1 pb-1">City:</label>
+                                            </div>
+                                            <div class="col-lg-8">
+                                                <input type="text" id="city" class="w-100 form-control" value="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Location info-2-->
+                                <div id="location_departure-field w-100" class=" form-group pt-1 pb-1">
+                                    <label for="location_departure" class="pt-1 pb-2">Location departure:</label>
+                                    <textarea id="location_departure" name="location_departure"
+                                        class="w-100 form-control" rows="4"></textarea> <!--required-->
+                                </div>
+                                <!-- Location info-3-->
+                                <div id="location_end-field w-100" class=" form-group pt-1 pb-1">
+                                    <label for="location_end" class="pt-1 pb-2">Location end:</label>
+                                    <textarea id="location_end" name="location_end" class="w-100 form-control"
+                                        rows="4"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Itinerary stops card-->
+                    <div id="itinerary_stops-card" class="create-data-session">
+                        <div class="card" style="border:none; min-width:350px">
+                            <div class="card-header heading-front-format-2 ps-0 "
+                                style="background-color: transparent;">
+                                <h5> Itinerary stops:</h5>
+                            </div>
+                            <div class="card-body ps-0 pe-0 pt-2">
+
+                                <div class="container p-0 w-100 form-control overflow-container"
+                                    style=" max-height: 300px; overflow-y: auto;">
+
+                                    <!-- Container -->
+                                    <div id="itinerary_stops-input-container" class="input-container">
+                                        <!-- an instance -->
+                                        <div class="card m-2 stop mb-3 instance">
+                                            <div class="card-header p-0" style="text-align:right">
+                                                <button type="button" class="btn-close delete-instance"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="form-group w-100">
+                                                    <label for="itinerary_stops[name][]" class=" pb-2">Name:</label>
+                                                    <input type="text" id="itinerary_stops[name][]"
+                                                        name="itinerary_stops[name][]" class="w-100 form-control">
+                                                </div>
+                                                <div class="form-group w-100">
+                                                    <label for="itinerary_stops[description][]"
+                                                        class="pt-1 pb-2">Description:</label>
+                                                    <textarea type="text" id="itinerary_stops[description][]"
+                                                        name="itinerary_stops[description][]"
+                                                        class="w-100 form-control"></textarea>
+                                                </div>
+                                                <div class="form-group w-100 pt-2">
+                                                    <div class="row">
+                                                        <div class="col mt-1">
+                                                            <div class="row">
+                                                                <div class="col-sm-auto d-flex align-items-center pb-1">
+                                                                    <label for="itinerary_stops[duration][]"
+                                                                        class="">Duration:</label>
+                                                                </div>
+                                                                <div class="col">
+                                                                    {{!-- <input type="text"
+                                                                        id="itinerary_stops[duration][]"
+                                                                        name="itinerary_stops[duration][]"
+                                                                        class="w-100 duration-input"> --}}
+                                                                    <div class="input-duration-container input-group form-control p-0 border-0"
+                                                                        style="min-width: 300px;">
+                                                                        <div
+                                                                            class="form-control p-1 ps-2 pe-2 d-flex flex-row justify-content-end ">
+                                                                            <input
+                                                                                class="input-duration-component input-duration-day p-0 border-0 flex-fill"
+                                                                                type="number" min="0" max="999"
+                                                                                maxlength="2" value="00"
+                                                                                style="width: 2.5em; text-align: center;"
+                                                                                oninput="formatNumberInput(this)">
+                                                                            <span class="p-0 flex-fill"> day </span>
+                                                                            <span class="p-0 flex-fill ps-1 pe-1"> -
+                                                                            </span>
+                                                                            <input
+                                                                                class="input-duration-component input-duration-hour p-0 border-0 flex-fill"
+                                                                                type="number" min="0" max="999"
+                                                                                maxlength="2" value="00"
+                                                                                style="width: 2.5em; text-align: center;"
+                                                                                oninput="formatNumberInput(this)">
+                                                                            <span class="p-0 flex-fill"> hour </span>
+                                                                            <span class="p-0 flex-fill ps-1 pe-1"> -
+                                                                            </span>
+                                                                            <input
+                                                                                class="input-duration-component input-duration-min p-0 border-0 flex-fill"
+                                                                                type="number" min="0" max="999"
+                                                                                maxlength="2" value="00"
+                                                                                style="width: 2.5em; text-align: center;"
+                                                                                oninput="formatNumberInput(this)">
+                                                                            <span class="p-0 flex-fill"> min </span>
+                                                                            {{!-- <input class="input-duration"
+                                                                                type="hidden" id="min_duration"
+                                                                                name="min_duration" value="0"> --}}
+                                                                            <input class="input-duration" type="hidden"
+                                                                                id="itinerary_stops[duration][]"
+                                                                                name="itinerary_stops[duration][]"
+                                                                                value="0">
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-auto mt-1 d-flex align-items-center pb-1">
+                                                            <label for="itinerary_stops[admission_ticket][]"
+                                                                class="pe-2">Admission
+                                                                ticket:</label>
+                                                            <input type="checkbox" data-toggle="switch"
+                                                                class="hpcheckbox" />
+                                                            <input type="hidden"
+                                                                name="itinerary_stops[admission_ticket][]" value="false"
+                                                                id="itinerary_stops[admission_ticket][]">
+                                                            {{!-- remove name --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Add button -->
+                                    {{!-- <div class="d-flex justify-content-center">
+                                        <i id="add-itinerary_stops"
+                                            class="bi bi-plus-circle btn rounded-circle add-instance"
+                                            style="font-size: 2rem; color:gray"></i>
+                                    </div> --}}
+                                    <button type="button" id="add-itinerary_stops"
+                                        class="btn btn-sm btn-outline-success border w-100 add-instance m-2">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Offer card-->
+                    <div id="offer-card" class="create-data-session">
+                        <div class="card" style="border:none;">
+                            <div class="card-header heading-front-format-2 ps-0" style="background-color: transparent;">
+                                <h5>Offer:</h5>
+                            </div>
+                            <div class="card-body pt-2">
+                                <div class="row row-cols-md-2">
+                                    <div class="pt-2 col-md-6 p-0">
+                                        <div class="form-group flex-shrink-0">
+                                            <label for="free_cancellation_available" class="p-0">- Free cancellation
+                                                available:</label>
+                                            <input type="checkbox" data-toggle="switch" class="hpcheckbox ps-2 ms-1" />
+                                            {{!--
+                                            remove name --}}
+                                            <input type="hidden" id="free_cancellation_available"
+                                                name="free_cancellation_available" value="false">
+
+                                        </div>
+                                    </div>
+                                    <div class=" pt-2 col-md-6 p-0">
+                                        <div class="form-group flex-shrink-0">
+                                            <label for="pick_up_included" class="p-0">- Pick up included:</label>
+                                            <input type="checkbox" data-toggle="switch" class="hpcheckbox ps-2 ms-1" />
+                                            {{!--
+                                            remove name --}}
+                                            <input type="hidden" id="pick_up_included" name="pick_up_included"
+                                                value="false">
+                                        </div>
+                                    </div>
+                                    <div class="pt-2 col-md-6 p-0">
+                                        <div class="form-group flex-shrink-0">
+                                            <label for="refundable" class="p-0">- Refundable: </label>
+                                            <input type="checkbox" data-toggle="switch" class="hpcheckbox ps-2 ms-1" />
+                                            {{!-- remove name --}}
+                                            <input type="hidden" id="refundable" name="refundable" value="false">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- General information card-->
+                    <div id="information-card" class="create-data-session">
+                        <div class="card" style="border:none;">
+                            <dir class="card-header heading-front-format-2 p-0 ps-0"
+                                style="background-color: transparent;">
+                                <h5>Information:</h5>
+                            </dir>
+                            <div class="card-body p-0 pt-2">
+                                <div class="card" style="border:none;">
+                                    <div class="card-body p-0 pt-2">
+                                        <!-- Session -->
+                                        <div id="included-session" class="pb-2">
+                                            <h6>What's included:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="included-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="included" name="included[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-included"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance ">
+                                                    <i class="bi bi-plus-lg"></i>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="not_included-session" class="pb-2">
+                                            <h6>What's not included:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="not_included-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1 ">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="not_included" name="not_included[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-not_included"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="accessibility-session" class="pb-2">
+                                            <h6>Accessibility:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="accessibility-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1 ">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="accessibility" name="accessibility[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-accessibility"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+
+
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="health_safety-session" class="pb-2">
+                                            <h6>Health safety:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="health_safety-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1 ">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="health_safety" name="health_safety[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-health_safety"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="whyvisit-session" class="pb-2">
+                                            <h6>Why visit:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="whyvisit-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1 ">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="whyvisit" name="whyvisit[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-whyvisit"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="restriction-session" class="pb-2">
+                                            <h6>Restriction:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="restriction-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1 ">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="restriction" name="restriction[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-restriction"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="languages-session" class="pb-2">
+                                            <h6>Languages:</h6>
+                                            <div class="container p-1 w-100 form-control "
+                                                style=" max-height: 200px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="languages-input-container" class="input-container p-0">
+                                                    <!-- Instances-->
+                                                    <div class="input-group instance p-0 pb-1">
+                                                        <span class="input-group-text border border-secondary-subtle">
+                                                            <i class="bi bi-dash"></i> </span>
+                                                        <input type="text" id="languages" name="languages[]"
+                                                            class="form-control border border-secondary-subtle">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border border-secondary-subtle"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                                <button type="button" id="add-languages"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="additional_information-session" class="pb-3">
+                                            <div id="additional_information-field w-100" class=" form-group">
+                                                <label for="additional_information">
+                                                    <h6>Additional information:</h6>
+                                                </label>
+                                                <textarea id="additional_information" name="additional_information"
+                                                    class="w-100 form-control" rows="6"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Available card-->
+                    <div id="available-card" class="create-data-session">
+                        <div class="card mt-2" style="border:none; min-width:fit-content pb-2">
+                            <dir class="card-header heading-front-format-2 p-0 ps-0"
+                                style="background-color: transparent;">
+                                <h5> Available:</h5>
+                            </dir>
+                            <div class="card-body p-0 pt-2 pb-2">
+                                <div class="container p-2 w-100 form-control overflow-container"
+                                    style=" max-height: 100px; overflow-y: auto;">
+                                    <!-- Container -->
+                                    <div id="available-input-container" class="input-container dateInputsContainer">
+                                        <!-- an instance -->
+                                        <div class="card stop mb-2 instance">
+                                            <div class="card-body p-0">
+                                                <div class="input-group flex-nowrap p-0 ps-2">
+                                                    <div class="row w-100 pt-2 pb-2">
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <label class="p-0" for="available[start][]">Start:
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <input class="w-100 p-0 form-control" type="date"
+                                                                        id="available[start][]"
+                                                                        name="available[start][]">
+                                                                    {{!--required | greater that 0--}}
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-sm-3">
+                                                                    <label class="p-0" for="available[end][]">End:
+                                                                    </label>
+                                                                </div>
+                                                                <div class="col-sm-9">
+                                                                    <input class="w-100 p-0 form-control" type="date"
+                                                                        id="available[end][]" name="available[end][]">
+                                                                    {{!--required | greater that min_duration--}}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div
+                                                        class="d-flex justify-content-center align-items-center border-start ms-1">
+                                                        <button
+                                                            class="btn btn-outline-danger delete-instance border-0 rounded-0 rounded-end-1 w-100 h-100"
+                                                            type="button" data-bs-dismiss="input" aria-label="Close"> <i
+                                                                class="bi bi-x-lg"></i> </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="button" id="add-available"
+                                        class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="tickets-card" class="create-data-session">
+                        <div class="card mt-3" style="border:none;">
+                            <dir class="card-header heading-front-format-2 p-0 ps-0"
+                                style="background-color: transparent;">
+                                <h5>Tickets:</h5>
+                            </dir>
+                            <div class="card-body p-0 pt-2">
+                                <div class="card" style="border:none;">
+                                    <div class="card-body p-0 pt-2">
+                                        <!-- Session -->
+                                        <div id="select_time-session">
+                                            <h6>Selected times:</h6>
+                                            <div class="container p-1 w-100 form-control overflow-container"
+                                                style=" max-height: 100px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="select_time-input-container"
+                                                    class="input-container d-flex flex-wrap">
+
+                                                    <div class="input-group rounded-pill instance p-2"
+                                                        style="width: 9em;">
+                                                        <span class=" form-control ps-0 pe-0 border-end-0"
+                                                            tyle=" background:none" style="width:1px;">
+                                                            <input type="hidden" name="ticket[select_time][]"
+                                                                value="00:00" id="ticket[select_time][]">
+                                                        </span>
+                                                        <select
+                                                            class="selectpicker input-time-hour form-control ps-2 pe-2 border-start-0 border-end-0"
+                                                            data-live-search="true" style=" background:none;"
+                                                            style="width: 3em;"></select>
+                                                        <span
+                                                            class="input-group-text ps-0 pe-0 border-start-0 border-end-0"
+                                                            style=" background:none;">:</span>
+                                                        <select
+                                                            class="selectpicker input-time-min form-control  ps-2 pe-2 border-start-0 border-end-0"
+                                                            data-live-search="true"
+                                                            style="background:none  ps-1 pe-1"></select>
+                                                        <div class="input-group-text border-end-0 ps-1 pe-2"
+                                                            style=" background-color: transparent">
+                                                            <button
+                                                                class="btn btn-sm btn-outline-danger border delete-instance rounded-circle">
+                                                                <i class="bi bi-x-lg"></i>
+                                                            </button>
+                                                        </div>
+                                                        {{!-- <button
+                                                            class="input-group-text border-end-0 ps-1 pe-2 delete-instance"
+                                                            style=" background-color: transparent">
+                                                            <i class="bi bi-x-circle pe-1"
+                                                                style=" background-color: transparent"></i>
+                                                        </button> --}}
+                                                    </div>
+                                                    <!-- Instances-->
+                                                    {{!-- <div class="input-group instance mb-1">
+                                                        <div class="col">
+                                                            <input type="text" id="ticket[select_time][]"
+                                                                name="ticket[select_time][]" class="w-100">
+                                                        </div>
+                                                        <div class="col-auto">
+                                                            <button class="btn-close delete-instance" type="button"
+                                                                data-bs-dismiss="input" aria-label="Close"></button>
+                                                        </div>
+                                                    </div> --}}
+                                                </div>
+                                                <button type="button" id="add-select_time"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance">
+                                                    <i class="bi bi-plus-lg"></i>
+
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- Session -->
+                                        <div id="select_time-session" class="pt-2">
+                                            <h6>Types of tickets:</h6>
+                                            <div class="container p-2 w-100 form-control overflow-container"
+                                                style=" max-height: 300px; overflow-y: auto;">
+                                                <!-- Instances container-->
+                                                <div id="ticket_type-input-container" class="input-container w-100 pt-2"
+                                                    style="min-width: 200px;">
+                                                    <!-- Instances-->
+                                                    <div class="instance w-100 pb-1" style="min-width: 200px;">
+
+                                                        <div class="card border w-100" style="min-width: 200px;">
+                                                            <div class="card-body p-0 " style="min-width: 200px;">
+
+                                                                <div class="row w-100 h-100 p-0 m-0 w-100"
+                                                                    style="min-width: 200px;">
+                                                                    <div class="d-flex flex-row p-0 w-100">
+
+                                                                        <div class="col p-1">
+                                                                            <div class="row w-100 h-100 p-0 m-0">
+                                                                                <div class="col-md-12 p-1">
+                                                                                    <div
+                                                                                        class="row w-100 h-100 p-0 m-0">
+                                                                                        <div
+                                                                                            class="col-sm-auto d-flex align-items-center pb-1">
+                                                                                            <label class=""
+                                                                                                for="ticket[ticket_type][name][]">Name:</label>
+                                                                                        </div>
+                                                                                        <div class="col">
+                                                                                            <input
+                                                                                                class="w-100 form-control"
+                                                                                                type="text"
+                                                                                                id="ticket[ticket_type][name][]"
+                                                                                                name="ticket[ticket_type][name][]">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-8 p-1">
+                                                                                    <div
+                                                                                        class="row w-100 h-100 p-0 m-0">
+                                                                                        <div
+                                                                                            class="col-sm-auto d-flex align-items-center pb-1">
+                                                                                            <label class=""
+                                                                                                for="ticket[ticket_type][people_per_ticket][]">People
+                                                                                                per ticket:</label>
+                                                                                        </div>
+                                                                                        <div class="col ">
+                                                                                            <input
+                                                                                                class="w-100 form-control"
+                                                                                                type="number"
+                                                                                                id="ticket[ticket_type][people_per_ticket][]"
+                                                                                                name="ticket[ticket_type][people_per_ticket][]"
+                                                                                                value="1" min="1">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-4 p-1">
+                                                                                    <div
+                                                                                        class="row w-100 h-100 p-0 m-0 ">
+                                                                                        <div
+                                                                                            class="col-sm-auto d-flex align-items-center pb-1">
+                                                                                            <label class=""
+                                                                                                for="ticket[ticket_type][price][]">Price:</label>
+                                                                                        </div>
+                                                                                        <div
+                                                                                            class="col d-flex align-items-center">
+                                                                                            <input
+                                                                                                class="w-100 form-control floatInput"
+                                                                                                type="text"
+                                                                                                id="ticket[ticket_type][price][]"
+                                                                                                name="ticket[ticket_type][price][]"
+                                                                                                value="0">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        {{!-- <div
+                                                                            class="col-auto p-1 border-start d-flex justify-content-center align-items-center flex-wrap">
+
+                                                                            <button class="btn-close delete-instance "
+                                                                                type="button" data-bs-dismiss="input"
+                                                                                aria-label="Close"></button>
+                                                                        </div> --}}
+                                                                        <div
+                                                                            class="d-flex justify-content-center align-items-center border-start ms-1">
+                                                                            <button
+                                                                                class="btn btn-outline-danger delete-instance border-0 rounded-0 rounded-end-1 w-100 h-100"
+                                                                                type="button" data-bs-dismiss="input"
+                                                                                aria-label="Close"> <i
+                                                                                    class="bi bi-x-lg"></i> </button>
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <button type="button" id="add-ticket_type"
+                                                    class="btn btn-sm btn-outline-success border w-100 add-instance ">
+                                                    <i class="bi bi-plus-lg"></i>
+                                                </button>
+                                                {{!-- <div class="d-flex justify-content-center">
+                                                    <i id="add-ticket_type"
+                                                        class="bi bi-plus-circle btn rounded-circle add-instance"
+                                                        style="font-size: 2rem; color:gray"></i>
+                                                </div> --}}
+                                                {{!-- <button type="button" id="add-ticket_type"
+                                                    class="btn btn-sm btn-outline-success w-100 add-instance"
+                                                    style="min-width: 200px">+</button> --}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tickets card-->
+
+                    <!-- -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success" id="submit-create-form-button">Add
+                            attraction</button>
+                        {{!-- <button type="button" class="btn btn-success" id="submit-create-form-button">Add
+                            attraction</button> --}}
+                    </div>
+            </form>
         </div>
     </div>
 </div>
-<!-- Button trigger modal -->
+
+<script>
+    // Handle checkbox input
+    $(document).on('click', '.hpcheckbox', function () {
+        var checkbox = $(this);
+        var instance = $(this).parent();
+        var input = instance.children("input[type='hidden']");
+        if (checkbox.is(':checked')) {
+            input.val("true")
+        } else {
+            input.val("false")
+        }
+    });
+    // Handle duration input
+    function formatNumberInput(element) {
+        let value = parseInt(element.value);
+        if (value < 10) {
+
+            value = ('0' + value).slice(-2)
+        }
+        element.value = value;
+    }
+    // Hanlde input float
+    $('.floatInput').on('input', function () {
+        var inputValue = $(this).val();
+
+        // Validate the input as a float
+        if (!/^\d*\.?\d*$/.test(inputValue)) {
+            $(this).addClass('is-invalid');
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    function FormatDurationInput($duration_container) {
+
+        const day = parseInt($duration_container.find('.input-duration-day').val())
+        const hour = parseInt($duration_container.find('.input-duration-hour').val())
+        const min = parseInt($duration_container.find('.input-duration-min').val())
+        const input_duration = $duration_container.find('.input-duration')
+
+        input_duration.val(day * 1440 + hour * 60 + min)
+        input_duration.trigger('change');
+    }
+    // Handle instance input
+
+    let instance_template = {}
+    // <!> Handle add an instance: to use:
+    // add id with template add-{name} to and class add-instance to add button
+    // within a container with template {name}-input-container
+    // then add to instance_template constant html format
+    $(document).on('click', '.add-instance', function () {
+        const input_field = $(this).attr("id").split('-')[1]
+        const input_field_container = `${input_field}-input-container`
+        $(`#${input_field_container}`).append(instance_template[input_field])
+    });
+    // <!> Handle delete instance to use:
+    // add delete-instance to class of delete button
+    // add class instance to what is considered an instance
+    $(document).on('click', '.btn-close.delete-instance', function () {
+        const closed = $(this).closest('.instance');
+        closed.remove()
+    });
+    $(document).on('click', 'button.delete-instance', function () {
+        const closed = $(this).closest('.instance');
+        closed.remove()
+    });
+    // when page is ready
+    $(document).ready(function () {
+        // Handle duration input
+        $(document).on('input', '.input-duration-component', function () {
+            FormatDurationInput($(this).closest('.input-duration-container'))
+        });
+
+        $(document).on('change', '#min_duration', function () {
+            if (parseInt($(this).val()) > parseInt($('#max_duration').val())) {
+                const min_duration_duration_container = $(this).closest('.input-duration-container');
+                const max_duration_duration_container = $('#max_duration').closest('.input-duration-container');
+                const day = parseInt(min_duration_duration_container.find('.input-duration-day').val())
+                const hour = parseInt(min_duration_duration_container.find('.input-duration-hour').val())
+                const min = parseInt(min_duration_duration_container.find('.input-duration-min').val())
+
+                max_duration_duration_container.find('.input-duration').val(day * 1440 + hour * 60 + min)
+                function TempFormatDate(input) {
+                    if (input < 10) {
+                        return "0" + input;
+                    }
+                    return input
+                }
+                max_duration_duration_container.find('.input-duration-day').val(TempFormatDate(day))
+                max_duration_duration_container.find('.input-duration-hour').val(TempFormatDate(hour))
+                max_duration_duration_container.find('.input-duration-min').val(TempFormatDate(min))
+            }
+        });
+        // Handle time (00:00) input
+        $('.input-time-hour').each(function () {
+            // Populate the dropdown menu with hours in 00 to 23 format
+            for (var i = 0; i <= 23; i++) {
+                var hour = ('0' + i).slice(-2); // Pad single digit hours with leading zero
+                var dropdownItem = $('<option>', {
+                    value: hour,
+                    text: hour
+                });
+                $(this).append(dropdownItem);
+            }
+        })
+        $('.input-time-min').each(function () {
+            // Populate the dropdown menu with hours in 00 to 23 format
+            for (var i = 0; i <= 59; i++) {
+                var hour = ('0' + i).slice(-2); // Pad single digit hours with leading zero
+                var dropdownItem = $('<option>', {
+                    value: hour,
+                    text: hour
+                });
+                $(this).append(dropdownItem);
+            }
+        })
+
+        //$('.selectpicker').selectpicker('refresh');
+        function Update_select_time($instance) {
+            const hour = $instance.find('.input-time-hour').val()
+            const min = $instance.find('.input-time-min').val()
+            const select_time = $instance.find(`input[name='ticket\\[select_time\\]\\[\\]']`)
+            select_time.val(`${hour}:${min}`)
+            console.log(select_time.val())
+        }
+        $(document).on('change', '.selectpicker', function () {
+            console.log(`${$(this).val()}`)
+            Update_select_time($(this).closest('.instance'))
+        })
+        //$('.selectpicker').change(function () {
+        //    console.log(`${$(this).val()}`)
+        //    Update_select_time($(this).closest('.instance'))
+        //})
+
+        // <!-- Handle instances-->
+
+        // <!> Handle create instance_template:
+        // add class input-container and id with format {name}-input-container 
+        // to instance container
+        const input_field_container = $('.input-container')
+        input_field_container.each(function () {
+            const input_field = $(this).attr("id").split('-')[0]
+            instance_template[input_field] = $(this).html()
+            // console.log(instance_template[input_field])
+        })
+        function setDefaultDate() {
+            const today = new Date();
+            const nextDay = new Date();
+            nextDay.setDate(nextDay.getDate() + 1);
+            const defaultDate = today.toISOString().split('T')[0];
+            const defaultNextDate = nextDay.toISOString().split('T')[0];
+
+            $(`input[type='date']`).each(function () {
+                if (!$(this).val()) {
+                    if ($(this).attr('name') == `available[end][]`)
+                        $(this).val(defaultNextDate)
+                    else
+                        $(this).val(defaultDate)
+                }
+            })
+        }
+        setDefaultDate()
+        const dateInputsContainer = $('.dateInputsContainer');
+        const observer = new MutationObserver((mutationsList) => {
+            setDefaultDate()
+            /*
+            for (const mutation of mutationsList) {
+                if (mutation.type === 'childList') {
+                    const addedNodes = mutation.addedNodes;
+                    for (const node of addedNodes) {
+                        console.log('New element added:', node);
+                    }
+                }
+            }
+            */
+        });
+        observer.observe(dateInputsContainer[0], { childList: true });
+
+    })
+
+</script>
+
+<script>
+    function validateForm() {
+        const formInput = {
+            owner: $('#owner'),
+            name: $('#name'),
+            short_description: $('#short_description'),
+            description: $('#description'),
+            min_duration: $('#min_duration'),
+            max_duration: $('#max_duration'),
+            location_departure: $('#location_departure'),
+            location_end: $('#location_end'),
+            continent: $('#continent'),
+            country: $('#country'),
+            city: $('#city'),
+
+            itinerary_stops: {
+                name: $(`[id='itinerary_stops\\[name\\]\\[\\]']`),
+                description: $(`[id='itinerary_stops\\[description\\]\\[\\]`),
+                duration: $(`[id='itinerary_stops\\[duration\\]\\[\\]']`),
+                admission_ticket: $(`[id='itinerary_stops\\[admission_ticket\\]\\[\\]']`),
+            },
+            free_cancellation_available: $('#free_cancellation_available'),
+            pick_up_included: $('#pick_up_included'),
+            refundable: $('#refundable'),
+            included: $(`[id='included']`),
+            not_included: $(`[id='not_included']`),
+            accessibility: $(`[id='accessibility']`),
+            health_safety: $(`[id='health_safety']`),
+            whyvisit: $(`[id='whyvisit']`),
+            restriction: $(`[id='restriction']`),
+            languages: $(`[id='languages']`),
+            additional_information: $('#additional_information'),
+            available: {
+                start: $(`[id='available\\[start\\]\\[\\]']`),
+                end: $(`[id='available\\[end\\]\\[\\]']`),
+            },
+            ticket: {
+                select_time: $(`[id='ticket\\[select_time\\]\\[\\]']`),
+                ticket_type: {
+                    name: $(`[id='ticket\\[ticket_type\\]\\[name\\]\\[\\]']`),
+                    people_per_ticket: $(`[id='ticket\\[ticket_type\\]\\[people_per_ticket\\]\\[\\]']`),
+                    price: $(`[id='ticket[ticket_type\\]\\[price\\]\\[\\]']`),
+                }
+            }
+        }
+        var formIsValid = { value: true };
+        // check empty
+        const empty_check = {
+            single_string: ['description', 'name', 'short_description', 'city', 'country', 'continent', 'location_departure'],
+            duration: ['min_duration', 'max_duration'],
+            array: {
+                single_string_input_group: ['included', 'not_included', 'accessibility', 'health_safety', 'whyvisit', 'restriction', 'languages']
+            },
+            object: {
+                // fields: ['itinerary_stops', 'available', 'ticket'],
+                fields: ['itinerary_stops', 'ticket'],
+
+                itinerary_stops: {
+                    array: {
+                        single_string: ['name', 'description'],
+                        duration: ['duration'],
+                    },
+                },
+                available: {
+                    array: {
+                        single_string: ['start', 'end'],
+                    },
+                },
+                ticket: {
+                    object: {
+                        fields: ['ticket_type'],
+                        ticket_type: {
+                            array: {
+                                single_string: ['name'],
+                            },
+                        },
+                    },
+                },
+            },
+        }
+        function empty_check_string_element($element, formIsValid) {
+            if ($element.val().trim() === '') {
+                formIsValid.value = false;
+
+                $element.addClass('is-invalid');
+                $element.removeClass('is-valid');
+                //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+            } else {
+                $element.removeClass('is-invalid');
+                $element.addClass('is-valid');
+                //nameInput.nextElementSibling.textContent = '';
+            }
+        }
+        function empty_check_duration_element($element, formIsValid) {
+            const container = $element.parent()
+            if (parseInt($element.val()) == 0) {
+                formIsValid.value
+
+                container.addClass('is-invalid border border-1 border-danger');
+                container.removeClass('is-valid border-0');
+
+                //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+            } else {
+                container.removeClass('is-invalid border border-1 border-danger');
+                container.addClass('is-valid border-0');
+                //nameInput.nextElementSibling.textContent = '';
+            }
+        }
+        function empty_check_input_group_element($element, formIsValid) {
+            const error = 'is-invalid border border-1 border-danger'
+            const ok = 'is-valid border border-secondary-subtle'
+            const correct = 'is-valid border border-success'
+            if ($element.val().trim() === '') {
+                formIsValid.value = false;
+
+                $element.next().addClass(error);
+                $element.prev().addClass(error);
+                $element.next().removeClass(ok);
+                $element.prev().removeClass(ok);
+                $element.next().removeClass(correct);
+                $element.prev().removeClass(correct);
+                $element.addClass(error);
+                $element.removeClass(ok);
+                //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+            } else {
+                $element.next().removeClass(error);
+                $element.prev().removeClass(error);
+                $element.next().addClass(correct);
+                $element.prev().addClass(correct);
+                $element.removeClass(error);
+                $element.addClass(correct);
+                //nameInput.nextElementSibling.textContent = '';
+            }
+
+        }
+        function empty_check_object_element(empty_check, formInput, formIsValid) {
+            if (empty_check['single_string']) {
+                for (element of empty_check['single_string']) {
+                    empty_check_string_element(formInput[element], formIsValid)
+                }
+            }
+            if (empty_check['duration']) {
+                for (element of empty_check['duration']) {
+                    empty_check_duration_element(formInput[element], formIsValid)
+                }
+            }
+            if (empty_check['array']) {
+                if (empty_check['array']['single_string_input_group']) {
+                    for (element_field of empty_check['array']['single_string_input_group']) {
+                        formInput[element_field].each(function () {
+                            empty_check_input_group_element($(this), formIsValid)
+                        })
+                    }
+                }
+                if (empty_check['array']['single_string']) {
+                    for (element_field of empty_check['array']['single_string']) {
+                        formInput[element_field].each(function () {
+                            empty_check_string_element($(this), formIsValid)
+                        })
+                    }
+                }
+                if (empty_check['array']['duration']) {
+                    for (element_field of empty_check['array']['duration']) {
+                        formInput[element_field].each(function () {
+                            empty_check_duration_element($(this), formIsValid)
+                        })
+                    }
+                }
+            }
+            if (empty_check['object']) {
+                for (element_field of empty_check['object']['fields']) {
+                    empty_check_object_element(empty_check['object'][element_field], formInput[element_field], formIsValid)
+                }
+            }
+        }
+
+        empty_check_object_element(empty_check, formInput, formIsValid)
+        console.log(formIsValid)
 
 
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <form method="post" action="">
-            <div class="modal-content">
-                <input type="hidden" name="user_id" value={{ user._id }}>
-                <input type="hidden" name="user_name" value={{ user.name }}>
-                <input type="hidden" name="avatar" value={{ user.avatar }}>
-                {{!-- <div>
-                    {{ user._id }},{{ user.name }},{{ user.avatar }}
-                </div> --}}
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add Comment</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Rating(1-5)</label>
-                        <input min="0" max="5" name='rating' type="number" class="form-control" id="rating"
-                            placeholder="Enter your name" required>
+        // other constaint
+        function checkMinLessThanMaxValidation($min, $max, formIsValid) {
+            const min_value = parseInt($min.val())
+            const max_value = parseInt($max.val())
+            if (min_value == 0 && max_value == 0)
+                return
+            if (min_value != 0 && max_value == 0) {
+                addResult($min, true)
+                addResult($max, true)
+                formIsValid = false
+                return
+            }
+            function addResult($element, isError) {
+                const container = $element.parent()
+                if (isError) {
+                    container.addClass('is-invalid border border-1 border-danger');
+                    container.removeClass('is-valid border-0');
+                    //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+                    formIsValid.value = false;
+                } else {
+                    container.removeClass('is-invalid border border-1 border-danger');
+                    container.addClass('is-valid border-0');
+                    //nameInput.nextElementSibling.textContent = '';
+                }
+            }
+
+            if (min_value > max_value) {
+                addResult($min, true)
+                addResult($max, true)
+                formIsValid = false
+            } else {
+                addResult($min, false)
+                addResult($max, false)
+            }
+        }
+        function checkInputIsGreaterThanOne($element, formIsValid) {
+            if (parseInt($element.val()) <= 0) {
+                $element.addClass('is-invalid');
+                $element.removeClass('is-valid');
+
+                //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+                formIsValid.value = false;
+            } else {
+                $element.removeClass('is-invalid');
+                $element.addClass('is-valid');
+                //nameInput.nextElementSibling.textContent = '';
+            }
+        }
+        function checkStartLessThanEnd($start, $end, formIsValid) {
+            const startDate = new Date($start.val())
+            const endDate = new Date($end.val())
+
+            if (startDate > endDate) {
+                $start.addClass('is-invalid');
+                $end.addClass('is-invalid');
+
+                $start.removeClass('is-valid ');
+                $end.removeClass('is-valid ');
+                formIsValid = false
+            } else {
+                $start.removeClass('is-invalid');
+                $end.removeClass('is-invalid');
+
+                $start.addClass('is-valid');
+                $end.addClass('is-valid');
+            }
+        }
+
+        checkMinLessThanMaxValidation(formInput['min_duration'], formInput['max_duration'], formIsValid)
+        formInput['ticket']['ticket_type']['people_per_ticket'].each(function () {
+            checkInputIsGreaterThanOne($(this), formIsValid)
+        })
+        $.each(formInput['available']['start'], function (index, element) {
+            const start_element = $(element)
+            const end_element = formInput['available']['end'].eq(index)
+            checkStartLessThanEnd(start_element, end_element, formIsValid)
+        })
+
+        const morethanone = {
+            fields: ['itinerary_stops', 'available', 'select_time', 'ticket_type'],
+            itinerary_stops: formInput['itinerary_stops'],
+            available: formInput['available'],
+            select_time: formInput['ticket']['select_time'],
+            ticket_type: formInput['ticket']['ticket_type']
+        }
+        //const morethanone = [formInput['itinerary_stops'], formInput['available'], formInput['ticket']['select_time'], formInput['ticket']['ticket_type']]
+        for (field of morethanone['fields']) {
+            checkInputLengthIsGreaterThanOne(field, morethanone[field], formIsValid)
+        }
+        function checkInputLengthIsGreaterThanOne(field, $element, formIsValid) {
+            const container = $(`#${field}-input-container`).closest('.overflow-container')
+            if (!$element || $element.length < 1 || $element[Object.keys($element)[0]].length < 1) {
+                container.addClass('is-invalid border border-1 border-danger');
+                container.removeClass('is-valid border-0');
+                //nameInput.nextElementSibling.textContent = 'Please enter your name.';
+                formIsValid.value = false;
+            } else {
+                container.removeClass('is-invalid border border-1 border-danger');
+                container.addClass('is-valid border-0');
+                //nameInput.nextElementSibling.textContent = '';
+            }
+
+        }
+        return formIsValid.value
+    }
+    $(document).ready(function () {
+
+        $(document).on('submit', '#create-form', function () {
+            const isValid = validateForm()
+            if (!isValid) {
+                event.preventDefault();
+            }
+        })
+        /*
+        $(document).on('click', '#create-form', function () {
+            const isValid = validateForm()
+            if (!isValid) {
+                event.preventDefault();
+            }
+        })
+        */
+    })
+</script>
+
+
+<script>
+    /*$(document).ready(function() {
+      var temp = $('#update-result').text();
+        if (temp == "true"){
+            alert('Update successful!');
+      }
+        else alert('Failed@');
+    });*/
+
+    $(document).ready(function () {
+        $('.record #btn-update').click(function () {
+            var attractionId = $(this).data('id');
+            // Update some info
+            $('#record-id').val(attractionId);
+            $('#modal-update').show();
+            // ----------
+            //alert('Update button clicked for record:\n' + attractionId);
+        });
+
+        $('.modal .close').click(function () {
+            $('.modal').hide();
+        });
+
+    });
+
+    $(document).ready(function () {
+        $('.record #btn-delete').click(function () {
+            var attractionId = $(this).data('id');
+            // Delete some info
+
+            // ----------
+            alert('Delete button clicked for record:\n' + attractionId);
+        });
+    });
+
+</script>
+
+
+{{!--
+<script>
+    $(document).ready(function () {
+        const insert_input = {
+            available: `<div style="display: grid; grid-template-columns: auto auto;" class="w-100 an-instance">
+            <div id="start-container" style="text-align: left;">
+                <label for="available[start][]">Start:</label>
+                <input type="date" id="available[start][]" name="available[start][]"
+                    style="max-width: 400px;" class="form-control">
+            </div>
+            <div id="end-container" style="text-align: right;">
+                <label for="available[end][]">End:</label>
+                <input type="date" id="available[end][]" name="available[end][]" style="max-width: 400px;"
+                    class="form-control">
+            </div>
+        </div>`,
+            itinerary_stops: `<div class="w-100 an-instance">
+            <div class="row w-100" id="stop-name">
+                <label for="itinerary_stops[name][]" class="">Name:</label>
+                <input type="text" id="itinerary_stops[name][]" name="itinerary_stops[name][]"
+                    class="form-control w-100 ms-2">
+            </div>
+            <div class="row w-100" id="stop-description">
+                <label for="itinerary_stops[description][]" class="">Description:</label>
+                <textarea type="text" id="itinerary_stops[description][]" name="itinerary_stops[description][]"
+                    class="form-control w-100 ms-2"></textarea>
+            </div>
+            <div class="row mt-1 g-1">
+                <div id="duration" class="col">
+                    <div class="row align-items-center">
+                        <div class="col-auto">
+                            <label for="itinerary_stops[duration][]">Duration:</label>
+                        </div>
+                        <div class="col">
+                            <input type="text" id="itinerary_stops[duration][]" name="itinerary_stops[duration][]"
+                                class="form-control" style='max-width:80px'>
+                        </div>
                     </div>
-                    <div class="mb-3">
-                        <label for="comment" class="form-label">Comment</label>
-                        <textarea name='comment' class="form-control" id="comment" rows="5"
-                            placeholder="Enter your comment" required></textarea>
-                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                <div id="admission_ticket" class="col  d-flex align-items-center justify-content-end">
+                    <div>
+                        <label for="itinerary_stops[admission_ticket][]" class="p-0">Admission ticket:</label>
+                        <input type="checkbox" data-toggle="switch" name="itinerary_stops[admission_ticket][]"
+                            id="itinerary_stops[admission_ticket][]" value="false" class="hpcheckbox" />
+                        <input type="hidden" name="itinerary_stops[admission_ticket][]" value="false">
+                    </div>
                 </div>
             </div>
-        </form>
-    </div>
-</div>
+        </div>`,
+        }
 
 
-<div class="flex-empty"></div>
-<div class="flex-content"></div>
+        $('.add-input-string-btn').on('click', function () {
+            var field = $(this).attr('id').split('-')[1]
+            var container = `#${field}-input-container`
+            var Input = `<input type="text" id="${field}" name="${field}" class="w-100 mt-1" style="max-width: 400px;">`
+            $(container).append(Input);
+        });
 
-<div class="flex-empty"></div>
-<!-- Main Body -->
+        $('.add-input-object-btn').on('click', function () {
+
+            var field = $(this).attr('id').split('-')[1]
+
+            var container = `#${field}-input-container`
+            var Input = insert_input[field]
+            if ($(container + ' .an-instance').length > 0)
+                Input = '<div class="line"></div> ' + Input
+            console.log(field)
+
+
+            $(container).append(Input);
+        });
+    })
+</script> --}}
+{{!--
+<script>
+    $(document).ready(function () {
+        $('.hpcheckbox').each(function () {
+            var checkbox = $(this);
+            var hiddenInput = $('<input>').attr({
+                type: 'hidden',
+                name: checkbox.attr('name'),
+                value: 'false'
+            });
+
+            checkbox.after(hiddenInput);
+        });
+        $(document).on('click', '.hpcheckbox', function () {
+            var checkbox = $(this);
+            var hiddenInput = $('<input>').attr({
+                type: 'hidden',
+                name: checkbox.attr('name'),
+                value: 'false'
+            });
+
+            if (checkbox.is(':checked')) {
+                hiddenInput.remove();
+            } else {
+                checkbox.after(hiddenInput);
+            }
+        });
+    });
+</script> --}}

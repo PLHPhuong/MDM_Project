@@ -3,6 +3,45 @@ const router = express.Router();
 const axios = require("axios");
 const asyncHandler = require("express-async-handler");
 
+function handleActtractionReq(req) {
+  req["duration"] = {
+    min_duration: req["min_duration"],
+    max_duration: req["max_duration"],
+  };
+  const itinerary_stops = [];
+  for (index in req["itinerary_stops"]["name"]) {
+    itinerary_stops.push({
+      name: req["itinerary_stops"]["name"][index],
+      description: req["itinerary_stops"]["description"][index],
+      duration: parseInt(req["itinerary_stops"]["duration"][index]),
+      admission_ticket:
+        req["itinerary_stops"]["admission_ticket"][index] == "true",
+    });
+  }
+  req["itinerary_stops"] = itinerary_stops;
+
+  const available = [];
+  for (index in req["available"]["start"]) {
+    available.push({
+      start: req["available"]["start"][index],
+      end: req["available"]["end"][index],
+    });
+  }
+  req["available"] = available;
+
+  const ticket_type = [];
+  for (index in req["ticket"]["ticket_type"]["name"]) {
+    ticket_type.push({
+      name: req["ticket"]["ticket_type"]["name"][index],
+      people_per_ticket: parseInt(
+        req["ticket"]["ticket_type"]["people_per_ticket"][index]
+      ),
+      price: parseFloat(req["ticket"]["ticket_type"]["price"][index]),
+    });
+  }
+  req["ticket"]["ticket_type"] = ticket_type;
+  return req;
+}
 const AttractionController = require("../controller/attractionController");
 const AttractionModel = require("../models/attractionModel");
 // router.get("/", (req, res) => {
@@ -22,13 +61,13 @@ router.get("/", AttractionController.LoadMainPageAttraction);
 router.get("/search/:city", AttractionController.LoadFilterAttractionPage);
 router.post("/search", AttractionController.LoadFilterAttractionPage);
 
-router.get("/attractionDetail/comment", (req, res) => {
-  user = req.session.user;
-  res.render("comment", {
-    layout: "main",
-    user: user,
-  });
-});
+// router.get("/comment", (req, res) => {
+//   user = req.session.user;
+//   res.render("comment", {
+//     layout: "secondary",
+//     user: user,
+//   });
+// });
 
 router.get("/", async (req, res) => {
   user = req.session.user;
@@ -48,12 +87,13 @@ router.get(
   asyncHandler(async (req, res) => {
     user = req.session.user;
     // const response = await axios.get("http://localhost:8000/api/acttraction");
-    const response = await axios.get("http://localhost:8000/api/activities/user/"+user._id);
-
+    const response = await axios.get(
+      "http://localhost:8000/api/activities/user/" + user._id
+    );
 
     // console.log(user)
     res.render("test1", {
-      layout: "main",
+      layout: "secondary",
       user: user,
       data: {
         title: "Attraction management",
@@ -66,18 +106,18 @@ router.get(
 router.get(
   "/attractionDetail/:id",
   asyncHandler(async (req, res) => {
-    const id = req.params.id
+    const id = req.params.id;
     user = req.session.user;
     const response = await axios.get(
-      "http://localhost:8000/api/acttraction/" + id 
+      "http://localhost:8000/api/acttraction/" + id
     );
     const comments = await AttractionModel.GetAttractionComments(id);
-    console.log(comments)
+    console.log(comments);
     // const data = {
     //   title: "Attraction detail",
     //   attractionItem: response.data[0],
     // };
-    
+
     // console.log(comments)
     res.render("attraction_detail", {
       layout: "main",
@@ -98,14 +138,33 @@ router.post(
 router.post(
   "/submit",
   asyncHandler(async (req, res) => {
-    const response = await axios.get("http://localhost:8000/api/acttraction");
-    user = req.session.user;
+    user = req.session.user
+    console.log("create");
+    req_body = req.body;
+    req_body = handleActtractionReq(req_body);
+    if (!req_body["buyer"] || req_body["buyer"].trim()==='') {
+      req_body["buyer"] = "6489e66e0e06f9c68a03f9d0";
+    }
+    console.log(req_body);
+    console.log(req_body.ticket.ticket_type);
 
-    const data = {
-      attractionItem: response.data,
-    };
-    console.log(req.body);
-    res.redirect("/attraction/test1");
+    try {
+      const response = await axios.post(
+        "http://localhost:8000/api/acttraction",
+        req_body
+      );
+      console.log(response.data)
+      // res.redirect("/attraction/comment");
+      res.redirect("/attraction/test1");
+    } catch (error) {
+      console.error("Error:", error);
+    }
+    // res.redirect("/attraction/test1")
+    // const data = {
+    //   attractionItem: response.data,
+    // };
+
+    // res.redirect("/attraction/test1");
   })
 );
 
@@ -121,8 +180,8 @@ router.post(
     );
     // console.log("Id: " + req.body._id);
     // console.log("Name" + response.data.name);
-
-    res.redirect(`/attraction/attractionDetail/${req.params.id}`);
+    res.redirect("/attraction/comment");
+    // res.redirect(`/attraction/attractionDetail/${req.params.id}`);
   })
 );
 
