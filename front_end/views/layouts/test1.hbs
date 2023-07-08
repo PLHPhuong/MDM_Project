@@ -4,9 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- bootstrap cnd -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    
+    <!-- web css -->
+    <link href="/css/main_layout.css" rel="stylesheet" type="text/css" />
+    <link href="/css/paging.css" rel="stylesheet" type="text/css" />
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
-    <h1>This is an layout test1</h1>
-    {{{body}}}
+    <div class="item-1">
+        <div class="flex-container">
+            <div class="flex-empty"></div>
+            <div class="flex-content">
+                <div id="header">
+                    <div id="website-name">
+                        <a href="/"> N10 NotBooking.com </a>
+                    </div>
+
+                    <div id="user-profile">
+                        {{#if user}}
+                        <div class="dropdown">
+                            <button class="btn bg-transparent" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{user.name}}
+                                <img src="img/sample_avatar.jpg" alt="Avatar" class="avatar avatar-img">
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Profile</a></li>
+                                <li><a class="dropdown-item" href="#">Partner ship</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="/logout">Log out</a></li>
+                            </ul>
+                        </div>
+                        {{else}}
+                        <a href="/login" class="btn btn-outline-light bg-transparent" id="login-buttom"> Login </a>
+                        {{/if}}
+                    </div>
+
+                    <div id="service-list">
+                        <ul>
+                            <li id="stay"><a href="/404">Stays</a></li>
+                            <li id="flight"><a href="/404">Flights</a></li>
+                            <li id="flight-and-hotel"><a href="/404">Flight + Hotel</a></li>
+                            <li id="car-retal"><a href="/404">Car retals</a></li>
+                            <li id="attraction"><a href="/attraction">Attraction</a></li>
+                            <li id="airport-taxi"><a href="/404">Airport taxis</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            <div class="flex-empty"></div>
+        </div>
+    </div>
+    <div class="item-2">
+        {{#if isIndex}}
+        {{> _greeting }}
+        {{/if}}
+        <div class="flex-container">
+            <div class="flex-empty"></div>
+            <div class="flex-content">
+                {{{body}}}
+            </div>
+            <div class="flex-empty"></div>
+        </div>
+    </div>
 </body>
 </html>
